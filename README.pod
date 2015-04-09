@@ -1,0 +1,83 @@
+=pod
+
+=head1 NAME
+
+Dist::Zilla::PluginBundle::Author::DBOOK - A plugin bundle for distributions
+built by DBOOK
+
+=head1 SYNOPSIS
+
+ [@Author::DBOOK]
+ fromcpanfile = 1
+ makemaker = awesome
+ mm_test_file = t/*.t
+
+=head1 DESCRIPTION
+
+This is the plugin bundle that DBOOK uses. It is equivalent to:
+
+ [GithubMeta]
+ issues = 1
+ 
+ [ReadmeAnyFromPod]
+ type = pod
+ filename = README.pod
+ location = root
+ 
+ [MetaProvides::Package]
+ [CPANFile]
+ 
+ [Git::Check]
+ [RewriteVersion]
+ [NextRelease]
+ [Git::Commit]
+ [Git::Tag]
+ [BumpVersionAfterRelease]
+ [Git::Commit / Commit_Version_Bump]
+ allow_dirty_match = ^lib/
+ commit_msg = Bump version
+ [Git::Push]
+ 
+ [GatherDir] ; split out to exclude existing license file
+ exclude_filename = LICENSE
+ [@Basic]
+ [MetaJSON]
+
+=head1 OPTIONS
+
+=head2 fromcpanfile
+
+ fromcpanfile = 1
+
+Set to a true value to read prereqs from an existing cpanfile, instead of
+writing a cpanfile to the distribution.
+
+=head2 makemaker
+
+ makemaker = awesome
+
+Set to C<awesome> to use the L<Dist::Zilla::Plugin::MakeMaker::Awesome> plugin
+instead of the basic C<MakeMaker> plugin. Options for C<MakeMaker::Awesome> can
+be specified with the prefix C<mma_>, for example C<mma_WriteMakefile_arg> and
+C<mma_header>.
+
+=head1 BUGS
+
+Report any issues on the public bugtracker.
+
+=head1 AUTHOR
+
+Dan Book, C<dbook@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2015, Dan Book.
+
+This library is free software; you may redistribute it and/or modify it under
+the terms of the Artistic License version 2.0.
+
+=head1 SEE ALSO
+
+L<Dist::Zilla>, L<Dist::Zilla::Plugin::MakeMaker::Awesome>
+
+=cut
