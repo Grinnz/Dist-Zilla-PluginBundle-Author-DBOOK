@@ -81,7 +81,9 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  
  [GatherDir] ; split out to exclude existing license file
  exclude_filename = LICENSE
- [@Basic]
+ [@Filter]
+ -bundle = @Basic
+ -remove = GatherDir
  [MetaJSON]
 
 =head1 OPTIONS
