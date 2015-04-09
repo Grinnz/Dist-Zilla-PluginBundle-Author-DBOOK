@@ -119,4 +119,4 @@ the terms of the Artistic License version 2.0.
 
 =head1 SEE ALSO
 
-L<Dist::Zilla>, L<Dist::Zilla::Plugin::MakeMaker::Awesome>
+L<Dist::Zilla>, L<Dist::Zilla::Plugin::MakeMaker::Awesome>, L<cpanfile>
