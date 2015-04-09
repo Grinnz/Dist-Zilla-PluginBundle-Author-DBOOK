@@ -51,7 +51,7 @@ built by DBOOK
  [@Author::DBOOK]
  fromcpanfile = 1
  makemaker = awesome
- mm_test_file = t/*.t
+ mma_test_file = t/*.t
 
 =head1 DESCRIPTION
 
