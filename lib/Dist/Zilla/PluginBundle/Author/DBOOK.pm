@@ -3,7 +3,7 @@ package Dist::Zilla::PluginBundle::Author::DBOOK;
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 sub mvp_multivalue_args { qw/mma_WriteMakefile_arg mma_header mma_footer mma_test_file mma_exe_file/ }
 
