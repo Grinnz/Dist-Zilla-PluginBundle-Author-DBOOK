@@ -18,6 +18,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
 
  [GithubMeta]
  issues = 1
+ user = Grinnz
  
  [ReadmeAnyFromPod]
  type = pod
@@ -30,6 +31,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [Git::Check]
  [RewriteVersion]
  [NextRelease]
+ format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
  [Git::Commit]
  [Git::Tag]
  [BumpVersionAfterRelease]
@@ -38,14 +40,31 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  commit_msg = Bump version
  [Git::Push]
  
- [GatherDir] ; split out to exclude existing license file
+ [Git::GatherDir]
  exclude_filename = LICENSE
- [@Filter]
- -bundle = @Basic
- -remove = GatherDir
+ [PruneCruft]
+ [ManifestSkip]
+ [MetaYAML]
  [MetaJSON]
+ [License]
+ [Readme]
+ [ExtraTests]
+ [ExecDir]
+ [ShareDir]
+ [MakeMaker]
+ [Manifest]
+ [TestRelease]
+ [ConfirmRelease]
+ [UploadToCPAN]
 
 =head1 OPTIONS
+
+=head2 github_user
+
+ github_user = gitster
+
+Set the user whose repository should be linked in metadata. Defaults to
+C<Grinnz>, change this when the main repository is elsewhere.
 
 =head2 fromcpanfile
 
@@ -54,14 +73,25 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
 Set to a true value to read prereqs from an existing cpanfile, instead of
 writing a cpanfile to the distribution.
 
+=head2 include_license
+
+ include_license = 1
+
+Set to a true value to include the existing license file in the distribution,
+instead of generating a new one.
+
 =head2 makemaker
 
  makemaker = awesome
+ mma_WriteMakefile_arg = (clean => { FILES => 'autogen.dat' })
+ mma_delimiter = |
+ mma_footer = |{
+ mma_footer = |  ...
+ mma_footer = |}
 
 Set to C<awesome> to use the L<Dist::Zilla::Plugin::MakeMaker::Awesome> plugin
 instead of the basic C<MakeMaker> plugin. Options for C<MakeMaker::Awesome> can
-be specified with the prefix C<mma_>, for example C<mma_WriteMakefile_arg> and
-C<mma_header>.
+then be specified with the prefix C<mma_>.
 
 =head1 BUGS
 

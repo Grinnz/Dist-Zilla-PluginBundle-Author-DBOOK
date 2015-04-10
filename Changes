@@ -1,4 +1,7 @@
 {{$NEXT}}
+  - Update Changes datetime format
+  - Use Git::GatherDir
+  - Add some more options
 
 0.001     2015-04-08 23:29:46-04:00 America/New_York
   - First release
