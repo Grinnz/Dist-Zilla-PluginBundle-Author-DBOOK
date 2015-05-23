@@ -1,4 +1,8 @@
 {{$NEXT}}
+  - Always use cpanfile
+  - Include files from build in root to allow installation without Dist::Zilla
+  - Remove from_cpanfile and include_license options
+  - Plugin bundle adds itself as develop requires
 
 0.002     2015-04-10 02:23:03 EDT
   - Update Changes datetime format

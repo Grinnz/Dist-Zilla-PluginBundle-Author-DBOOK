@@ -13,27 +13,29 @@ sub configure {
 	my $user = $self->payload->{github_user} // 'Grinnz';
 	$self->add_plugins([GithubMeta => { issues => 1, user => $user }]);
 	$self->add_plugins([ReadmeAnyFromPod => { type => 'pod', filename => 'README.pod', location => 'root' }]);
-	$self->add_plugins('MetaProvides::Package');
+	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile');
+	# Add this bundle as develop requires
+	$self->add_plugins([Prereqs => { -phase => 'develop', 'Dist::Zilla::PluginBundle::Author::DBOOK' => $VERSION }]);
 	
-	if ($self->payload->{fromcpanfile}) { $self->add_plugins('Prereqs::FromCPANfile') }
-	else { $self->add_plugins('CPANFile') }
+	my @from_build = qw(LICENSE META.json Makefile.PL);
+	my @dirty_files = (@from_build, qw(dist.ini Changes README.pod));
 	
 	# @Git and versioning
-	$self->add_plugins(qw/Git::Check RewriteVersion/,
-		[ NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' } ],
-		qw/Git::Commit Git::Tag BumpVersionAfterRelease/,
+	$self->add_plugins(
+		['Git::Check' => { allow_dirty => \@dirty_files }],
+		'RewriteVersion',
+		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
+		['Git::Commit' => { allow_dirty => \@dirty_files, allow_dirty_match => '^lib/' }],
+		qw/Git::Tag BumpVersionAfterRelease/,
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => '^lib/', commit_msg => 'Bump version' }],
 		'Git::Push');
 	
+	$self->add_plugins(['Git::GatherDir' => { exclude_filename => \@from_build }]);
+	$self->add_plugins(['CopyFilesFromBuild' => { copy => \@from_build }]);
+	
 	# @Basic, with some modifications
-	if ($self->payload->{include_license}) {
-		$self->add_plugins('Git::GatherDir');
-	} else {
-		$self->add_plugins(['Git::GatherDir' => { exclude_filename => 'LICENSE' }]);
-	}
-	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON/);
-	$self->add_plugins('License') unless $self->payload->{include_license};
-	$self->add_plugins(qw/Readme ExtraTests ExecDir ShareDir/);
+	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
+		License Readme ExtraTests ExecDir ShareDir/);
 	if (defined $self->payload->{makemaker} and lc $self->payload->{makemaker} eq 'awesome') {
 		my $mma_config = $self->config_slice({
 			mma_WriteMakefile_arg => 'WriteMakefile_arg',
@@ -78,13 +80,29 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  location = root
  
  [MetaProvides::Package]
- [CPANFile]
+ [Prereqs::FromCPANfile]
+ [Prereqs]
+ -phase = develop
+ Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
  
  [Git::Check]
+ allow_dirty = dist.ini
+ allow_dirty = Changes
+ allow_dirty = README.pod
+ allow_dirty = LICENSE
+ allow_dirty = META.json
+ allow_dirty = Makefile.PL
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
  [Git::Commit]
+ allow_dirty_match = ^lib/
+ allow_dirty = dist.ini
+ allow_dirty = Changes
+ allow_dirty = README.pod
+ allow_dirty = LICENSE
+ allow_dirty = META.json
+ allow_dirty = Makefile.PL
  [Git::Tag]
  [BumpVersionAfterRelease]
  [Git::Commit / Commit_Version_Bump]
@@ -94,6 +112,12 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  
  [Git::GatherDir]
  exclude_filename = LICENSE
+ exclude_filename = META.json
+ exclude_filename = Makefile.PL
+ [CopyFilesFromBuild]
+ copy = LICENSE
+ copy = META.json
+ copy = Makefile.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
@@ -117,20 +141,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
 
 Set the user whose repository should be linked in metadata. Defaults to
 C<Grinnz>, change this when the main repository is elsewhere.
-
-=head2 fromcpanfile
-
- fromcpanfile = 1
-
-Set to a true value to read prereqs from an existing cpanfile, instead of
-writing a cpanfile to the distribution.
-
-=head2 include_license
-
- include_license = 1
-
-Set to a true value to include the existing license file in the distribution,
-instead of generating a new one.
 
 =head2 makemaker
 

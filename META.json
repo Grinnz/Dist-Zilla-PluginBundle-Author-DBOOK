@@ -1,0 +1,71 @@
+{
+   "abstract" : "A plugin bundle for distributions built by DBOOK",
+   "author" : [
+      "Dan Book <dbook@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Dist::Zilla version 5.035, CPAN::Meta::Converter version 2.150001",
+   "license" : [
+      "artistic_2"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : 2
+   },
+   "name" : "Dist-Zilla-PluginBundle-Author-DBOOK",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "develop" : {
+         "requires" : {
+            "Dist::Zilla::PluginBundle::Author::DBOOK" : "0.003"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Dist::Zilla" : "0",
+            "Dist::Zilla::Plugin::BumpVersionAfterRelease" : "0",
+            "Dist::Zilla::Plugin::CopyFilesFromBuild" : "0",
+            "Dist::Zilla::Plugin::GithubMeta" : "0",
+            "Dist::Zilla::Plugin::MakeMaker::Awesome" : "0",
+            "Dist::Zilla::Plugin::MetaJSON" : "0",
+            "Dist::Zilla::Plugin::MetaProvides::Package" : "0",
+            "Dist::Zilla::Plugin::NextRelease" : "0",
+            "Dist::Zilla::Plugin::Prereqs::FromCPANfile" : "0",
+            "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0",
+            "Dist::Zilla::Plugin::RewriteVersion" : "0",
+            "Dist::Zilla::PluginBundle::Git" : "0",
+            "Moose" : "0",
+            "perl" : "5.010"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::More" : "0.88"
+         }
+      }
+   },
+   "provides" : {
+      "Dist::Zilla::PluginBundle::Author::DBOOK" : {
+         "file" : "lib/Dist/Zilla/PluginBundle/Author/DBOOK.pm",
+         "version" : "0.003"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK/issues"
+      },
+      "homepage" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK.git",
+         "web" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK"
+      }
+   },
+   "version" : "0.003"
+}
+

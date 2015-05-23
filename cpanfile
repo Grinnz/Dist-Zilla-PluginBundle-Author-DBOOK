@@ -9,7 +9,7 @@ requires 'Dist::Zilla::Plugin::NextRelease';
 requires 'Dist::Zilla::Plugin::BumpVersionAfterRelease';
 requires 'Dist::Zilla::Plugin::MetaJSON';
 requires 'Dist::Zilla::Plugin::MakeMaker::Awesome';
-requires 'Dist::Zilla::Plugin::CPANFile';
 requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
+requires 'Dist::Zilla::Plugin::CopyFilesFromBuild';
 requires 'Moose';
 test_requires 'Test::More' => '0.88';
