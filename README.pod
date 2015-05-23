@@ -30,6 +30,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  -phase = develop
  Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
  
+ [CheckChangesHasContent]
  [Git::Check]
  allow_dirty = dist.ini
  allow_dirty = Changes

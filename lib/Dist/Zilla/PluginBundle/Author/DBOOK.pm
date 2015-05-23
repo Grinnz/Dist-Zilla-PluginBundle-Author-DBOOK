@@ -22,6 +22,7 @@ sub configure {
 	
 	# @Git and versioning
 	$self->add_plugins(
+		'CheckChangesHasContent',
 		['Git::Check' => { allow_dirty => \@dirty_files }],
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
@@ -84,6 +85,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  -phase = develop
  Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
  
+ [CheckChangesHasContent]
  [Git::Check]
  allow_dirty = dist.ini
  allow_dirty = Changes

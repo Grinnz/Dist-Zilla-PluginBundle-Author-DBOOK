@@ -11,5 +11,6 @@ requires 'Dist::Zilla::Plugin::MetaJSON';
 requires 'Dist::Zilla::Plugin::MakeMaker::Awesome';
 requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
 requires 'Dist::Zilla::Plugin::CopyFilesFromRelease';
+requires 'Dist::Zilla::Plugin::CheckChangesHasContent';
 requires 'Moose';
 test_requires 'Test::More' => '0.88';
