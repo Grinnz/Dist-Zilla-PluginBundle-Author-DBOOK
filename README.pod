@@ -34,12 +34,13 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
- allow_dirty = LICENSE
- allow_dirty = META.json
- allow_dirty = Makefile.PL
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
+ [CopyFilesFromRelease]
+ filename = LICENSE
+ filename = META.json
+ filename = Makefile.PL
  [Git::Commit]
  allow_dirty_match = ^lib/
  allow_dirty = dist.ini
@@ -59,10 +60,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = LICENSE
  exclude_filename = META.json
  exclude_filename = Makefile.PL
- [CopyFilesFromBuild]
- copy = LICENSE
- copy = META.json
- copy = Makefile.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
