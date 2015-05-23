@@ -17,22 +17,22 @@ sub configure {
 	# Add this bundle as develop requires
 	$self->add_plugins([Prereqs => { -phase => 'develop', 'Dist::Zilla::PluginBundle::Author::DBOOK' => $VERSION }]);
 	
-	my @from_build = qw(LICENSE META.json Makefile.PL);
-	my @dirty_files = (@from_build, qw(dist.ini Changes README.pod));
+	my @from_release = qw(LICENSE META.json Makefile.PL);
+	my @dirty_files = qw(dist.ini Changes README.pod);
 	
 	# @Git and versioning
 	$self->add_plugins(
 		['Git::Check' => { allow_dirty => \@dirty_files }],
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
-		['Git::Commit' => { allow_dirty => \@dirty_files, allow_dirty_match => '^lib/' }],
-		qw/Git::Tag BumpVersionAfterRelease/,
+		[CopyFilesFromRelease => { filename => \@from_release }],
+		['Git::Commit' => { allow_dirty => [@dirty_files, @from_release], allow_dirty_match => '^lib/' }],
+		'Git::Tag',
+		'BumpVersionAfterRelease',
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => '^lib/', commit_msg => 'Bump version' }],
 		'Git::Push');
 	
-	$self->add_plugins(['Git::GatherDir' => { exclude_filename => \@from_build }]);
-	$self->add_plugins(['CopyFilesFromBuild' => { copy => \@from_build }]);
-	
+	$self->add_plugins(['Git::GatherDir' => { exclude_filename => \@from_release }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License Readme ExtraTests ExecDir ShareDir/);
@@ -88,12 +88,13 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
- allow_dirty = LICENSE
- allow_dirty = META.json
- allow_dirty = Makefile.PL
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
+ [CopyFilesFromRelease]
+ filename = LICENSE
+ filename = META.json
+ filename = Makefile.PL
  [Git::Commit]
  allow_dirty_match = ^lib/
  allow_dirty = dist.ini
@@ -113,10 +114,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = LICENSE
  exclude_filename = META.json
  exclude_filename = Makefile.PL
- [CopyFilesFromBuild]
- copy = LICENSE
- copy = META.json
- copy = Makefile.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]

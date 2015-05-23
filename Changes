@@ -1,6 +1,6 @@
 {{$NEXT}}
   - Always use cpanfile
-  - Include files from build in root to allow installation without Dist::Zilla
+  - Include files from release in root to allow installation without Dist::Zilla
   - Remove from_cpanfile and include_license options
   - Plugin bundle adds itself as develop requires
 
