@@ -62,7 +62,6 @@ built by DBOOK
 =head1 SYNOPSIS
 
  [@Author::DBOOK]
- fromcpanfile = 1
  makemaker = awesome
  mma_test_file = t/*.t
 
