@@ -29,7 +29,7 @@ sub configure {
 		[CopyFilesFromRelease => { filename => \@from_release }],
 		['Git::Commit' => { allow_dirty => [@dirty_files, @from_release], allow_dirty_match => '^lib/' }],
 		'Git::Tag',
-		'BumpVersionAfterRelease',
+		[BumpVersionAfterRelease => { munge_makefile_pl => 0 }],
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => '^lib/', commit_msg => 'Bump version' }],
 		'Git::Push');
 	
@@ -107,6 +107,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = Makefile.PL
  [Git::Tag]
  [BumpVersionAfterRelease]
+ munge_makefile_pl = 0
  [Git::Commit / Commit_Version_Bump]
  allow_dirty_match = ^lib/
  commit_msg = Bump version
