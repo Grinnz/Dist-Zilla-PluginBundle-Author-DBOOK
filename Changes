@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.007     2015-07-27 13:01:26 EDT
   - add Git::Contributors and MetaNoIndex for better metadata
   - generate dist README with ReadmeAnyFromPod instead of Readme
 
