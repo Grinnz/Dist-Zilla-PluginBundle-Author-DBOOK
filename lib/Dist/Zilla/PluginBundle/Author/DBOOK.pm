@@ -28,7 +28,7 @@ sub configure {
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
 		[CopyFilesFromRelease => { filename => \@from_release }],
-		['Git::Commit' => { allow_dirty => [@dirty_files, @from_release], allow_dirty_match => '^lib/' }],
+		['Git::Commit' => { allow_dirty => [@dirty_files, @from_release], allow_dirty_match => '^lib/', add_files_in => '/' }],
 		'Git::Tag',
 		[BumpVersionAfterRelease => { munge_makefile_pl => 0 }],
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => '^lib/', commit_msg => 'Bump version' }],
@@ -51,7 +51,8 @@ sub configure {
 	} else {
 		$self->add_plugins('MakeMaker');
 	}
-	$self->add_plugins(qw/Manifest TestRelease ConfirmRelease UploadToCPAN/);
+	$self->add_plugins(qw/Manifest TestRelease ConfirmRelease/);
+	$self->add_plugins($ENV{FAKE_RELEASE} ? 'FakeRelease' : 'UploadToCPAN');
 }
 
 1;
@@ -82,7 +83,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  
  [MetaProvides::Package]
  [Prereqs::FromCPANfile]
- [Prereqs]
+ [Prereqs / Self_Prereq]
  -phase = develop
  Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
  
@@ -99,6 +100,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = META.json
  filename = Makefile.PL
  [Git::Commit]
+ add_files_in = /
  allow_dirty_match = ^lib/
  allow_dirty = dist.ini
  allow_dirty = Changes
@@ -132,6 +134,16 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [TestRelease]
  [ConfirmRelease]
  [UploadToCPAN]
+
+This bundle assumes that your git repo has the following: a L<cpanfile> with
+the dist's prereqs, a C<Changes> populated for the current version (see
+L<Dist::Zilla::Plugin::NextRelease>), and a C<.gitignore> including
+C<Name-Of-Dist-*> but not C<Makefile.PL> or C<META.json>.
+
+To test releasing, set the env var C<FAKE_RELEASE=1> to run everything except
+the upload to CPAN.
+
+ $ FAKE_RELEASE=1 dzil release
 
 =head1 OPTIONS
 

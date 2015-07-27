@@ -30,6 +30,7 @@ requires 'Dist::Zilla::Plugin::Manifest';
 requires 'Dist::Zilla::Plugin::TestRelease';
 requires 'Dist::Zilla::Plugin::ConfirmRelease';
 requires 'Dist::Zilla::Plugin::UploadToCPAN';
+requires 'Dist::Zilla::Plugin::FakeRelease';
 requires 'Moose';
 requires 'Scalar::Util';
 test_requires 'Test::More' => '0.88';
