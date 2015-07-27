@@ -25,6 +25,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::CopyFilesFromRelease" => 0,
     "Dist::Zilla::Plugin::ExecDir" => 0,
     "Dist::Zilla::Plugin::ExtraTests" => 0,
+    "Dist::Zilla::Plugin::FakeRelease" => 0,
     "Dist::Zilla::Plugin::Git::Check" => 0,
     "Dist::Zilla::Plugin::Git::Commit" => 0,
     "Dist::Zilla::Plugin::Git::GatherDir" => 0,
@@ -55,7 +56,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.005",
+  "VERSION" => "0.006",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -70,6 +71,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::CopyFilesFromRelease" => 0,
   "Dist::Zilla::Plugin::ExecDir" => 0,
   "Dist::Zilla::Plugin::ExtraTests" => 0,
+  "Dist::Zilla::Plugin::FakeRelease" => 0,
   "Dist::Zilla::Plugin::Git::Check" => 0,
   "Dist::Zilla::Plugin::Git::Commit" => 0,
   "Dist::Zilla::Plugin::Git::GatherDir" => 0,
