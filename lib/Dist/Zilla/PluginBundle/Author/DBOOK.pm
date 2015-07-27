@@ -1,6 +1,7 @@
 package Dist::Zilla::PluginBundle::Author::DBOOK;
 
 use Moose;
+use Scalar::Util 'blessed';
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
 our $VERSION = '0.005';
@@ -15,7 +16,7 @@ sub configure {
 	$self->add_plugins([ReadmeAnyFromPod => { type => 'pod', filename => 'README.pod', location => 'root' }]);
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile');
 	# Add this bundle as develop requires
-	$self->add_plugins([Prereqs => { -phase => 'develop', 'Dist::Zilla::PluginBundle::Author::DBOOK' => $VERSION }]);
+	$self->add_plugins([Prereqs => 'Self_Prereq' => { -phase => 'develop', (blessed $self) => $self->VERSION }]);
 	
 	my @from_release = qw(LICENSE META.json Makefile.PL);
 	my @dirty_files = qw(dist.ini Changes README.pod);

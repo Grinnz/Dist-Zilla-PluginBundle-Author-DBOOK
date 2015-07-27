@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - Depend on plugins explicitly used
+  - Add package of $self as prereq to allow subclassing
 
 0.004     2015-06-27 00:11:59 EDT
   - Turn off munge_makefile_pl in BumpVersionAfterRelease
