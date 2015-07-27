@@ -19,13 +19,22 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  issues = 1
  user = Grinnz
  
- [ReadmeAnyFromPod]
+ [ReadmeAnyFromPod / Readme_Github]
  type = pod
  filename = README.pod
  location = root
  
  [MetaProvides::Package]
  [Prereqs::FromCPANfile]
+ [Git::Contributors]
+ [MetaNoIndex]
+ directory = t
+ directory = xt
+ directory = inc
+ directory = share
+ directory = eg
+ directory = examples
+ 
  [Prereqs / Self_Prereq]
  -phase = develop
  Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
@@ -68,7 +77,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [MetaYAML]
  [MetaJSON]
  [License]
- [Readme]
+ [ReadmeAnyFromPod]
  [ExtraTests]
  [ExecDir]
  [ShareDir]

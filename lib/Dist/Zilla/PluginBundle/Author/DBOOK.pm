@@ -13,8 +13,9 @@ sub configure {
 	
 	my $user = $self->payload->{github_user} // 'Grinnz';
 	$self->add_plugins([GithubMeta => { issues => 1, user => $user }]);
-	$self->add_plugins([ReadmeAnyFromPod => { type => 'pod', filename => 'README.pod', location => 'root' }]);
-	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile');
+	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root' }]);
+	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
+	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
 	# Add this bundle as develop requires
 	$self->add_plugins([Prereqs => 'Self_Prereq' => { -phase => 'develop', (blessed $self) => $self->VERSION }]);
 	
@@ -37,7 +38,7 @@ sub configure {
 	$self->add_plugins(['Git::GatherDir' => { exclude_filename => \@from_release }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
-		License Readme ExtraTests ExecDir ShareDir/);
+		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
 	if (defined $self->payload->{makemaker} and lc $self->payload->{makemaker} eq 'awesome') {
 		my $mma_config = $self->config_slice({
 			mma_WriteMakefile_arg => 'WriteMakefile_arg',
@@ -76,13 +77,22 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  issues = 1
  user = Grinnz
  
- [ReadmeAnyFromPod]
+ [ReadmeAnyFromPod / Readme_Github]
  type = pod
  filename = README.pod
  location = root
  
  [MetaProvides::Package]
  [Prereqs::FromCPANfile]
+ [Git::Contributors]
+ [MetaNoIndex]
+ directory = t
+ directory = xt
+ directory = inc
+ directory = share
+ directory = eg
+ directory = examples
+ 
  [Prereqs / Self_Prereq]
  -phase = develop
  Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
@@ -125,7 +135,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [MetaYAML]
  [MetaJSON]
  [License]
- [Readme]
+ [ReadmeAnyFromPod]
  [ExtraTests]
  [ExecDir]
  [ShareDir]

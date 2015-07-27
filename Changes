@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - add Git::Contributors and MetaNoIndex for better metadata
+  - generate dist README with ReadmeAnyFromPod instead of Readme
 
 0.006     2015-07-27 11:51:10 EDT
   - Git-add files newly created during build
