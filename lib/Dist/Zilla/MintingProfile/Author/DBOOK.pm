@@ -65,4 +65,4 @@ the terms of the Artistic License version 2.0.
 
 =head1 SEE ALSO
 
-L<Dist::Zilla>, L<cpanfile>
+L<Dist::Zilla>, L<cpanfile>, L<Dist::Zilla::PluginBundle::Author::DBOOK>
