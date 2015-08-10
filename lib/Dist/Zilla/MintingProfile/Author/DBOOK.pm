@@ -44,7 +44,7 @@ C<.gitignore>
 
 =back
 
-The created dist.ini will use the current dzil C<config.ini> to populate the
+The created C<dist.ini> will use the current dzil C<config.ini> to populate the
 author, license, and copyright fields. It will additionally add the plugin
 bundle L<Dist::Zilla::PluginBundle::Author::DBOOK>.
 
