@@ -4,7 +4,7 @@ use Moose;
 use Scalar::Util 'blessed';
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 
 sub mvp_multivalue_args { qw/mma_WriteMakefile_arg mma_header mma_footer mma_test_file mma_exe_file/ }
 
