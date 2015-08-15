@@ -35,6 +35,12 @@ sub configure {
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => '^lib/', commit_msg => 'Bump version' }],
 		'Git::Push');
 	
+	# Pod tests
+	if ($self->payload->{pod_tests}) {
+		$self->add_plugins('PodSyntaxTests');
+		$self->add_plugins('PodCoverageTests') unless $self->payload->{pod_tests} eq 'syntax';
+	}
+	
 	$self->add_plugins(['Git::GatherDir' => { exclude_filename => \@from_release }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
@@ -176,6 +182,14 @@ C<Grinnz>, change this when the main repository is elsewhere.
 Set to C<awesome> to use the L<Dist::Zilla::Plugin::MakeMaker::Awesome> plugin
 instead of the basic C<MakeMaker> plugin. Options for C<MakeMaker::Awesome> can
 then be specified with the prefix C<mma_>.
+
+=head2 pod_tests
+
+ pod_tests = 1
+
+Set to a true value to add L<Dist::Zilla::Plugin::PodSyntaxTests> and
+L<Dist::Zilla::Plugin::PodCoverageTests>. Set to C<syntax> to only add the
+syntax tests.
 
 =head1 BUGS
 

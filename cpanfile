@@ -28,6 +28,8 @@ requires 'Dist::Zilla::Plugin::MetaNoIndex';
 requires 'Dist::Zilla::Plugin::MetaProvides::Package';
 requires 'Dist::Zilla::Plugin::MetaYAML';
 requires 'Dist::Zilla::Plugin::NextRelease';
+requires 'Dist::Zilla::Plugin::PodCoverageTests';
+requires 'Dist::Zilla::Plugin::PodSyntaxTests';
 requires 'Dist::Zilla::Plugin::Prereqs';
 requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
 requires 'Dist::Zilla::Plugin::PruneCruft';
