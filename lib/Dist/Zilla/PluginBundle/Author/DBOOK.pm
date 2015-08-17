@@ -74,6 +74,7 @@ built by DBOOK
  [@Author::DBOOK]
  makemaker = awesome
  mma_test_file = t/*.t
+ Git::GatherDir.exclude_filename[0] = bad_file
 
 =head1 DESCRIPTION
 
