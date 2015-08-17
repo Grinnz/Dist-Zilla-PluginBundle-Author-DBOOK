@@ -42,6 +42,10 @@ C<LICENSE>
 
 C<.gitignore>
 
+=item *
+
+C<.travis.yml>
+
 =back
 
 The created C<dist.ini> will use the current dzil C<config.ini> to populate the

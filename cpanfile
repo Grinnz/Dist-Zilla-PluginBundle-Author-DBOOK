@@ -40,6 +40,7 @@ requires 'Dist::Zilla::Plugin::TemplateModule';
 requires 'Dist::Zilla::Plugin::TestRelease';
 requires 'Dist::Zilla::Plugin::UploadToCPAN';
 requires 'Dist::Zilla::Role::MintingProfile::ShareDir';
+requires 'Dist::Zilla::Role::PluginBundle::Config::Slicer';
 requires 'Dist::Zilla::Role::PluginBundle::Easy';
 requires 'Moose';
 requires 'Scalar::Util';

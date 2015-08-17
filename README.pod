@@ -99,6 +99,10 @@ the upload to CPAN.
 
 =head1 OPTIONS
 
+This bundle composes the L<Dist::Zilla::Role::PluginBundle::Config::Slicer>
+role, so options for any included plugin may be specified in that format.
+Additionally, the following options are provided.
+
 =head2 github_user
 
  github_user = gitster

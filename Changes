@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - Add pluginbundle role Config::Slicer so options can be specified for any plugin
+  - Add .travis.yml to minting profile
 
 0.009     2015-08-15 14:11:22 EDT
   - add pod_tests option to use PodSyntaxTests and PodCoverageTests
