@@ -1,4 +1,5 @@
 {{$NEXT}}
+  - Remove now unnecessary mma_* options
 
 0.010     2015-08-16 22:25:27 EDT
   - Add pluginbundle role Config::Slicer so options can be specified for any plugin

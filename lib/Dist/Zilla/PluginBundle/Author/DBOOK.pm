@@ -6,8 +6,6 @@ with 'Dist::Zilla::Role::PluginBundle::Easy', 'Dist::Zilla::Role::PluginBundle::
 
 our $VERSION = '0.011';
 
-sub mvp_multivalue_args { qw/mma_WriteMakefile_arg mma_header mma_footer mma_test_file mma_exe_file/ }
-
 sub configure {
 	my $self = shift;
 	
@@ -46,15 +44,7 @@ sub configure {
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
 	if (defined $self->payload->{makemaker} and lc $self->payload->{makemaker} eq 'awesome') {
-		my $mma_config = $self->config_slice({
-			mma_WriteMakefile_arg => 'WriteMakefile_arg',
-			mma_header => 'header',
-			mma_footer => 'footer',
-			mma_delimiter => 'delimiter',
-			mma_test_file => 'test_file',
-			mma_exe_file => 'exe_file',
-		});
-		$self->add_plugins(['MakeMaker::Awesome' => $mma_config]);
+		$self->add_plugins('MakeMaker::Awesome');
 	} else {
 		$self->add_plugins('MakeMaker');
 	}
@@ -73,8 +63,9 @@ built by DBOOK
 
  [@Author::DBOOK]
  makemaker = awesome
- mma_test_file = t/*.t
+ MakeMaker::Awesome.test_file[] = t/*.t
  Git::GatherDir.exclude_filename[0] = bad_file
+ Git::GatherDir.exclude_filename[1] = another_file
 
 =head1 DESCRIPTION
 
@@ -178,15 +169,15 @@ C<Grinnz>, change this when the main repository is elsewhere.
 =head2 makemaker
 
  makemaker = awesome
- mma_WriteMakefile_arg = (clean => { FILES => 'autogen.dat' })
- mma_delimiter = |
- mma_footer = |{
- mma_footer = |  ...
- mma_footer = |}
+ MakeMaker::Awesome.WriteMakefile_arg[] = (clean => { FILES => 'autogen.dat' })
+ MakeMaker::Awesome.delimiter = |
+ MakeMaker::Awesome.footer[00] = |{
+ MakeMaker::Awesome.footer[01] = |  ...
+ MakeMaker::Awesome.footer[20] = |}
 
 Set to C<awesome> to use the L<Dist::Zilla::Plugin::MakeMaker::Awesome> plugin
 instead of the basic C<MakeMaker> plugin. Options for C<MakeMaker::Awesome> can
-then be specified with the prefix C<mma_>.
+then be specified using config slicing.
 
 =head2 pod_tests
 
