@@ -65,6 +65,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::TestRelease" => 0,
     "Dist::Zilla::Plugin::UploadToCPAN" => 0,
     "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
+    "Dist::Zilla::Role::PluginBundle::Config::Slicer" => 0,
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "Moose" => 0,
     "Scalar::Util" => 0
@@ -72,7 +73,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.009",
+  "VERSION" => "0.010",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -121,6 +122,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::TestRelease" => 0,
   "Dist::Zilla::Plugin::UploadToCPAN" => 0,
   "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
+  "Dist::Zilla::Role::PluginBundle::Config::Slicer" => 0,
   "Dist::Zilla::Role::PluginBundle::Easy" => 0,
   "Moose" => 0,
   "Scalar::Util" => 0,
