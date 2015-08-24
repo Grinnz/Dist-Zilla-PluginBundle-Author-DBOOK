@@ -16,4 +16,4 @@ nytprof.out
 *.o
 *.bs
 /_eumm/
-{{$dist->name}}-*
+/{{$dist->name}}-*

@@ -17,4 +17,4 @@ nytprof.out
 *.o
 *.bs
 /_eumm/
-Dist-Zilla-PluginBundle-Author-DBOOK-*
+/Dist-Zilla-PluginBundle-Author-DBOOK-*
