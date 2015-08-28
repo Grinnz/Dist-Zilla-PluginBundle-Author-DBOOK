@@ -9,6 +9,10 @@ our $VERSION = '0.014';
 sub configure {
 	my $self = shift;
 	
+	my %accepted_installers = map { ($_ => 1) } qw(MakeMaker MakeMaker::Awesome ModuleBuildTiny);
+	my $installer = $self->payload->{installer} // 'MakeMaker';
+	die "Invalid installer $installer\n" unless exists $accepted_installers{$installer};
+	
 	my $user = $self->payload->{github_user} // 'Grinnz';
 	$self->add_plugins([GithubMeta => { issues => 1, user => $user }]);
 	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root' }]);
@@ -17,7 +21,12 @@ sub configure {
 	# Add this bundle as develop requires
 	$self->add_plugins([Prereqs => 'Self_Prereq' => { -phase => 'develop', (blessed $self) => $self->VERSION }]);
 	
-	my @from_release = qw(LICENSE META.json Makefile.PL);
+	my @from_release = qw(LICENSE META.json);
+	if ($installer eq 'ModuleBuildTiny') {
+		push @from_release, 'Build.PL';
+	} else {
+		push @from_release, 'Makefile.PL';
+	}
 	my @dirty_files = qw(dist.ini Changes README.pod);
 	
 	# @Git and versioning
@@ -43,12 +52,7 @@ sub configure {
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
-	
-	my %accepted_installers = map { ($_ => 1) } qw(MakeMaker MakeMaker::Awesome ModuleBuildTiny);
-	my $installer = $self->payload->{installer} // 'MakeMaker';
-	die "Invalid installer $installer\n" unless exists $accepted_installers{$installer};
 	$self->add_plugins($installer);
-	
 	$self->add_plugins(qw/Manifest TestRelease ConfirmRelease/);
 	$self->add_plugins($ENV{FAKE_RELEASE} ? 'FakeRelease' : 'UploadToCPAN');
 }
@@ -147,7 +151,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
 This bundle assumes that your git repo has the following: a L<cpanfile> with
 the dist's prereqs, a C<Changes> populated for the current version (see
 L<Dist::Zilla::Plugin::NextRelease>), and a C<.gitignore> including
-C<Name-Of-Dist-*> but not C<Makefile.PL> or C<META.json>.
+C<Name-Of-Dist-*> but not C<Makefile.PL>/C<Build.PL> or C<META.json>.
 
 To test releasing, set the env var C<FAKE_RELEASE=1> to run everything except
 the upload to CPAN.
