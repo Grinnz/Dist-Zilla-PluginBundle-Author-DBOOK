@@ -55,6 +55,7 @@ sub configure {
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
+	$self->add_plugins([ExecDir => 'ScriptDir' => { dir => 'script' }]);
 	$self->add_plugins($installer);
 	$self->add_plugins(qw/Manifest TestRelease ConfirmRelease/);
 	$self->add_plugins($ENV{FAKE_RELEASE} ? 'FakeRelease' : 'UploadToCPAN');
@@ -144,6 +145,8 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [ReadmeAnyFromPod]
  [ExtraTests]
  [ExecDir]
+ [ExecDir / ScriptDir]
+ dir = script
  [ShareDir]
  [MakeMaker]
  [Manifest]
