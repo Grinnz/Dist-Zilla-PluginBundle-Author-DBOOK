@@ -116,8 +116,9 @@ C<Grinnz>, change this when the main repository is elsewhere.
 
  installer = ModuleBuildTiny
 
-Set the L<Dist::Zilla> installer plugin to use. Overrides L</"makemaker">
-option.
+Set the L<Dist::Zilla> installer plugin to use. Allowed installers are
+C<MakeMaker>, C<MakeMaker::Awesome>, and C<ModuleBuildTiny>. Overrides
+L</"makemaker"> option.
 
 =head2 makemaker
 

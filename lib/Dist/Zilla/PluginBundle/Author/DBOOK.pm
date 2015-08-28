@@ -43,8 +43,11 @@ sub configure {
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
-	if (defined $self->payload->{installer}) {
-		$self->add_plugins($self->payload->{installer});
+	
+	my %accepted_installers = map { ($_ => 1) } qw(MakeMaker MakeMaker::Awesome ModuleBuildTiny);
+	if (defined (my $installer = $self->payload->{installer})) {
+		die "Invalid installer $installer\n" unless exists $accepted_installers{$installer};
+		$self->add_plugins($installer);
 	} elsif (defined $self->payload->{makemaker} and lc $self->payload->{makemaker} eq 'awesome') {
 		$self->add_plugins('MakeMaker::Awesome');
 	} else {
@@ -172,8 +175,9 @@ C<Grinnz>, change this when the main repository is elsewhere.
 
  installer = ModuleBuildTiny
 
-Set the L<Dist::Zilla> installer plugin to use. Overrides L</"makemaker">
-option.
+Set the L<Dist::Zilla> installer plugin to use. Allowed installers are
+C<MakeMaker>, C<MakeMaker::Awesome>, and C<ModuleBuildTiny>. Overrides
+L</"makemaker"> option.
 
 =head2 makemaker
 
