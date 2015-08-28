@@ -45,14 +45,10 @@ sub configure {
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
 	
 	my %accepted_installers = map { ($_ => 1) } qw(MakeMaker MakeMaker::Awesome ModuleBuildTiny);
-	if (defined (my $installer = $self->payload->{installer})) {
-		die "Invalid installer $installer\n" unless exists $accepted_installers{$installer};
-		$self->add_plugins($installer);
-	} elsif (defined $self->payload->{makemaker} and lc $self->payload->{makemaker} eq 'awesome') {
-		$self->add_plugins('MakeMaker::Awesome');
-	} else {
-		$self->add_plugins('MakeMaker');
-	}
+	my $installer = $self->payload->{installer} // 'MakeMaker';
+	die "Invalid installer $installer\n" unless exists $accepted_installers{$installer};
+	$self->add_plugins($installer);
+	
 	$self->add_plugins(qw/Manifest TestRelease ConfirmRelease/);
 	$self->add_plugins($ENV{FAKE_RELEASE} ? 'FakeRelease' : 'UploadToCPAN');
 }
@@ -173,26 +169,21 @@ C<Grinnz>, change this when the main repository is elsewhere.
 
 =head2 installer
 
- installer = ModuleBuildTiny
- ModuleBuildTiny.version_method = installed
-
-Set the L<Dist::Zilla> installer plugin to use. Allowed installers are
-C<MakeMaker>, C<MakeMaker::Awesome>, and C<ModuleBuildTiny>. Options for the
-selected installer can be specified using config slicing. Overrides
-L</"makemaker"> option.
-
-=head2 makemaker
-
- makemaker = awesome
+ installer = MakeMaker::Awesome
  MakeMaker::Awesome.WriteMakefile_arg[] = (clean => { FILES => 'autogen.dat' })
  MakeMaker::Awesome.delimiter = |
  MakeMaker::Awesome.footer[00] = |{
  MakeMaker::Awesome.footer[01] = |  ...
  MakeMaker::Awesome.footer[20] = |}
 
-Set to C<awesome> to use the L<Dist::Zilla::Plugin::MakeMaker::Awesome> plugin
-instead of the basic C<MakeMaker> plugin. Options for C<MakeMaker::Awesome> can
-then be specified using config slicing.
+ installer = ModuleBuildTiny
+ ModuleBuildTiny.version_method = installed
+
+Set the installer plugin to use. Allowed installers are
+L<MakeMaker|Dist::Zilla::Plugin::MakeMaker>,
+L<MakeMaker::Awesome|Dist::Zilla::Plugin::MakeMaker::Awesome>, and
+L<ModuleBuildTiny|Dist::Zilla::Plugin::ModuleBuildTiny>. Options for the
+selected installer can be specified using config slicing.
 
 =head2 pod_tests
 
@@ -219,5 +210,4 @@ the terms of the Artistic License version 2.0.
 
 =head1 SEE ALSO
 
-L<Dist::Zilla>, L<Dist::Zilla::Plugin::MakeMaker::Awesome>, L<cpanfile>,
-L<Dist::Zilla::MintingProfile::Author::DBOOK>
+L<Dist::Zilla>, L<cpanfile>, L<Dist::Zilla::MintingProfile::Author::DBOOK>
