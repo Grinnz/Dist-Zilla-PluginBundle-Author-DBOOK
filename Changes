@@ -1,4 +1,5 @@
 {{$NEXT}}
+  - Add [ModuleBuildTiny] as prereq to support installer option
 
 0.012     2015-08-28 14:59:32 EDT
   - Add installer option
