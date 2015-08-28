@@ -192,8 +192,9 @@ C<Grinnz>, change this when the main repository is elsewhere.
 Set the installer plugin to use. Allowed installers are
 L<MakeMaker|Dist::Zilla::Plugin::MakeMaker>,
 L<MakeMaker::Awesome|Dist::Zilla::Plugin::MakeMaker::Awesome>, and
-L<ModuleBuildTiny|Dist::Zilla::Plugin::ModuleBuildTiny>. Options for the
-selected installer can be specified using config slicing.
+L<ModuleBuildTiny|Dist::Zilla::Plugin::ModuleBuildTiny>. The default is
+C<MakeMaker>. Options for the selected installer can be specified using config
+slicing.
 
 =head2 pod_tests
 
