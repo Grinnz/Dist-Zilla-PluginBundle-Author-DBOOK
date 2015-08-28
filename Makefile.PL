@@ -52,6 +52,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::MetaNoIndex" => 0,
     "Dist::Zilla::Plugin::MetaProvides::Package" => 0,
     "Dist::Zilla::Plugin::MetaYAML" => 0,
+    "Dist::Zilla::Plugin::ModuleBuildTiny" => 0,
     "Dist::Zilla::Plugin::NextRelease" => 0,
     "Dist::Zilla::Plugin::PodCoverageTests" => 0,
     "Dist::Zilla::Plugin::PodSyntaxTests" => 0,
@@ -73,7 +74,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.012",
+  "VERSION" => "0.013",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -109,6 +110,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::MetaNoIndex" => 0,
   "Dist::Zilla::Plugin::MetaProvides::Package" => 0,
   "Dist::Zilla::Plugin::MetaYAML" => 0,
+  "Dist::Zilla::Plugin::ModuleBuildTiny" => 0,
   "Dist::Zilla::Plugin::NextRelease" => 0,
   "Dist::Zilla::Plugin::PodCoverageTests" => 0,
   "Dist::Zilla::Plugin::PodSyntaxTests" => 0,

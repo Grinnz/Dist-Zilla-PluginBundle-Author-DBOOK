@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.013     2015-08-28 15:24:52 EDT
   - Add [ModuleBuildTiny] as prereq to support installer option
   - Remove makemaker option in favor of installer = MakeMaker::Awesome
 
