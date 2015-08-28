@@ -12,7 +12,8 @@ sub configure {
 	my %accepted_installers = map { ($_ => 1) } qw(MakeMaker MakeMaker::Awesome ModuleBuildTiny);
 	my $installer = $self->payload->{installer} // 'MakeMaker';
 	unless (exists $accepted_installers{$installer}) {
-		die "Invalid installer plugin $installer. Possible installers: " . join ', ', sort keys %accepted_installers;
+		die "Invalid installer $installer. Possible installers: " .
+			join(', ', sort keys %accepted_installers) . "\n";
 	}
 	
 	my $user = $self->payload->{github_user} // 'Grinnz';
