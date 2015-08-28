@@ -43,7 +43,9 @@ sub configure {
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
-	if (defined $self->payload->{makemaker} and lc $self->payload->{makemaker} eq 'awesome') {
+	if (defined $self->payload->{installer}) {
+		$self->add_plugins($self->payload->{installer});
+	} elsif (defined $self->payload->{makemaker} and lc $self->payload->{makemaker} eq 'awesome') {
 		$self->add_plugins('MakeMaker::Awesome');
 	} else {
 		$self->add_plugins('MakeMaker');
@@ -62,7 +64,7 @@ built by DBOOK
 =head1 SYNOPSIS
 
  [@Author::DBOOK]
- makemaker = awesome
+ installer = MakeMaker::Awesome
  MakeMaker::Awesome.test_file[] = t/*.t
  Git::GatherDir.exclude_filename[0] = bad_file
  Git::GatherDir.exclude_filename[1] = another_file
@@ -165,6 +167,13 @@ Additionally, the following options are provided.
 
 Set the user whose repository should be linked in metadata. Defaults to
 C<Grinnz>, change this when the main repository is elsewhere.
+
+=head2 installer
+
+ installer = ModuleBuildTiny
+
+Set the L<Dist::Zilla> installer plugin to use. Overrides L</"makemaker">
+option.
 
 =head2 makemaker
 

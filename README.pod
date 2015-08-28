@@ -8,7 +8,7 @@ built by DBOOK
 =head1 SYNOPSIS
 
  [@Author::DBOOK]
- makemaker = awesome
+ installer = MakeMaker::Awesome
  MakeMaker::Awesome.test_file[] = t/*.t
  Git::GatherDir.exclude_filename[0] = bad_file
  Git::GatherDir.exclude_filename[1] = another_file
@@ -111,6 +111,13 @@ Additionally, the following options are provided.
 
 Set the user whose repository should be linked in metadata. Defaults to
 C<Grinnz>, change this when the main repository is elsewhere.
+
+=head2 installer
+
+ installer = ModuleBuildTiny
+
+Set the L<Dist::Zilla> installer plugin to use. Overrides L</"makemaker">
+option.
 
 =head2 makemaker
 
