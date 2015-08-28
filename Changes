@@ -1,5 +1,5 @@
 {{$NEXT}}
-  - Add script/ as another ExecDir
+  - Add script/ as another ExecDir for [ModuleBuildTiny] compatibility
 
 0.014     2015-08-28 16:43:08 EDT
   - Fix installer option to allow for Build.PL when using [ModuleBuildTiny]

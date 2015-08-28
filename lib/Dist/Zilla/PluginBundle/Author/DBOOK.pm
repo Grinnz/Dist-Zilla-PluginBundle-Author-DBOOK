@@ -71,6 +71,7 @@ built by DBOOK
 =head1 SYNOPSIS
 
  [@Author::DBOOK]
+ pod_tests = 1
  installer = MakeMaker::Awesome
  MakeMaker::Awesome.test_file[] = t/*.t
  Git::GatherDir.exclude_filename[0] = bad_file
