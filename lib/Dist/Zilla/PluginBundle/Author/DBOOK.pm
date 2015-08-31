@@ -9,7 +9,8 @@ our $VERSION = '0.016';
 sub configure {
 	my $self = shift;
 	
-	my %accepted_installers = map { ($_ => 1) } qw(MakeMaker MakeMaker::Awesome ModuleBuildTiny);
+	my %accepted_installers = map { ($_ => 1) }
+		qw(MakeMaker MakeMaker::Awesome ModuleBuildTiny ModuleBuildTiny::Fallback);
 	my $installer = $self->payload->{installer} // 'MakeMaker';
 	unless (exists $accepted_installers{$installer}) {
 		die "Invalid installer $installer. Possible installers: " .
@@ -25,7 +26,7 @@ sub configure {
 	$self->add_plugins([Prereqs => 'Self_Prereq' => { -phase => 'develop', (blessed $self) => $self->VERSION }]);
 	
 	my @from_release = qw(LICENSE META.json);
-	if ($installer eq 'ModuleBuildTiny') {
+	if ($installer =~ /^ModuleBuild/) {
 		push @from_release, 'Build.PL';
 	} else {
 		push @from_release, 'Makefile.PL';
@@ -192,10 +193,11 @@ C<Grinnz>, change this when the main repository is elsewhere.
 
 Set the installer plugin to use. Allowed installers are
 L<MakeMaker|Dist::Zilla::Plugin::MakeMaker>,
-L<MakeMaker::Awesome|Dist::Zilla::Plugin::MakeMaker::Awesome>, and
-L<ModuleBuildTiny|Dist::Zilla::Plugin::ModuleBuildTiny>. The default is
-C<MakeMaker>. Options for the selected installer can be specified using config
-slicing.
+L<MakeMaker::Awesome|Dist::Zilla::Plugin::MakeMaker::Awesome>,
+L<ModuleBuildTiny|Dist::Zilla::Plugin::ModuleBuildTiny>, and
+L<ModuleBuildTiny::Fallback|Dist::Zilla::Plugin::ModuleBuildTiny::Fallback>.
+The default is C<MakeMaker>. Options for the selected installer can be
+specified using config slicing.
 
 =head2 pod_tests
 

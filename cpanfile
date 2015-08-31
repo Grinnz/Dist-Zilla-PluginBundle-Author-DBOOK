@@ -28,6 +28,7 @@ requires 'Dist::Zilla::Plugin::MetaNoIndex';
 requires 'Dist::Zilla::Plugin::MetaProvides::Package';
 requires 'Dist::Zilla::Plugin::MetaYAML';
 requires 'Dist::Zilla::Plugin::ModuleBuildTiny';
+requires 'Dist::Zilla::Plugin::ModuleBuildTiny::Fallback';
 requires 'Dist::Zilla::Plugin::NextRelease';
 requires 'Dist::Zilla::Plugin::PodCoverageTests';
 requires 'Dist::Zilla::Plugin::PodSyntaxTests';
