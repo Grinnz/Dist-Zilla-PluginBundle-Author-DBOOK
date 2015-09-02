@@ -4,7 +4,7 @@ use Moose;
 use Scalar::Util 'blessed';
 with 'Dist::Zilla::Role::PluginBundle::Easy', 'Dist::Zilla::Role::PluginBundle::Config::Slicer';
 
-our $VERSION = '0.017';
+our $VERSION = '0.018';
 
 sub configure {
 	my $self = shift;
