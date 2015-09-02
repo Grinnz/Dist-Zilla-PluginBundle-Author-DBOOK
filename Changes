@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.018     2015-09-02 19:03:32 EDT
   - Allow for version rewriting in script or bin in git commits
 
 0.017     2015-09-02 01:01:32 EDT
