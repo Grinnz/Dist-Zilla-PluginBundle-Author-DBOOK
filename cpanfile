@@ -47,3 +47,4 @@ requires 'Dist::Zilla::Role::PluginBundle::Easy';
 requires 'Moose';
 requires 'Scalar::Util';
 test_requires 'Test::More' => '0.88';
+author_requires 'Dist::Zilla::Plugin::ModuleShareDirs';

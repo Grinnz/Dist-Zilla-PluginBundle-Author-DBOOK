@@ -33,7 +33,8 @@
       },
       "develop" : {
          "requires" : {
-            "Dist::Zilla::PluginBundle::Author::DBOOK" : "0.016",
+            "Dist::Zilla::Plugin::ModuleShareDirs" : "0",
+            "Dist::Zilla::PluginBundle::Author::DBOOK" : "0.017",
             "Test::Pod" : "1.41"
          }
       },
@@ -98,11 +99,11 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/DBOOK.pm",
-         "version" : "0.017"
+         "version" : "0.018"
       },
       "Dist::Zilla::PluginBundle::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/DBOOK.pm",
-         "version" : "0.017"
+         "version" : "0.018"
       }
    },
    "release_status" : "stable",
@@ -117,7 +118,7 @@
          "web" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK"
       }
    },
-   "version" : "0.017",
+   "version" : "0.018",
    "x_contributors" : [
       "Dan Book <grinnz@gmail.com>",
       "Dan Book <grinnz@grinnz.com>"
