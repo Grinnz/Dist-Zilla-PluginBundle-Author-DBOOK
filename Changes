@@ -1,4 +1,5 @@
 {{$NEXT}}
+  - Allow for version rewriting in script or bin in git commits
 
 0.017     2015-09-02 01:01:32 EDT
   - Exclude both installer files from Git::GatherDir

@@ -33,6 +33,7 @@ sub configure {
 	}
 	my @installer_files = qw(Build.PL Makefile.PL);
 	my @dirty_files = qw(dist.ini Changes README.pod);
+	my $versioned_match = '^(?:lib|script|bin)/';
 	
 	# @Git and versioning
 	$self->add_plugins(
@@ -41,10 +42,10 @@ sub configure {
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
 		[CopyFilesFromRelease => { filename => \@from_release }],
-		['Git::Commit' => { allow_dirty => [@dirty_files, @from_release], allow_dirty_match => '^lib/', add_files_in => '/' }],
+		['Git::Commit' => { allow_dirty => [@dirty_files, @from_release], allow_dirty_match => $versioned_match, add_files_in => '/' }],
 		'Git::Tag',
 		[BumpVersionAfterRelease => { munge_makefile_pl => 0 }],
-		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => '^lib/', commit_msg => 'Bump version' }],
+		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => $versioned_match, commit_msg => 'Bump version' }],
 		'Git::Push');
 	
 	# Pod tests
@@ -121,7 +122,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = Makefile.PL
  [Git::Commit]
  add_files_in = /
- allow_dirty_match = ^lib/
+ allow_dirty_match = ^(?:lib|script|bin)/
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
@@ -132,7 +133,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [BumpVersionAfterRelease]
  munge_makefile_pl = 0
  [Git::Commit / Commit_Version_Bump]
- allow_dirty_match = ^lib/
+ allow_dirty_match = ^(?:lib|script|bin)/
  commit_msg = Bump version
  [Git::Push]
  
