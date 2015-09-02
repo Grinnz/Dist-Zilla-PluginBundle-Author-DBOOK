@@ -31,6 +31,7 @@ sub configure {
 	} else {
 		push @from_release, 'Makefile.PL';
 	}
+	my @installer_files = qw(Build.PL Makefile.PL);
 	my @dirty_files = qw(dist.ini Changes README.pod);
 	
 	# @Git and versioning
@@ -52,7 +53,7 @@ sub configure {
 		$self->add_plugins('PodCoverageTests') unless $self->payload->{pod_tests} eq 'syntax';
 	}
 	
-	$self->add_plugins(['Git::GatherDir' => { exclude_filename => \@from_release }]);
+	$self->add_plugins(['Git::GatherDir' => { exclude_filename => [@installer_files, @from_release] }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
@@ -139,6 +140,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = LICENSE
  exclude_filename = META.json
  exclude_filename = Makefile.PL
+ exclude_filename = Build.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]

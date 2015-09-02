@@ -75,6 +75,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = LICENSE
  exclude_filename = META.json
  exclude_filename = Makefile.PL
+ exclude_filename = Build.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
