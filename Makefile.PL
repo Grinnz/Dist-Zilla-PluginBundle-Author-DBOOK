@@ -43,6 +43,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::Git::Push" => 0,
     "Dist::Zilla::Plugin::Git::Tag" => 0,
     "Dist::Zilla::Plugin::GithubMeta" => 0,
+    "Dist::Zilla::Plugin::InstallGuide" => 0,
     "Dist::Zilla::Plugin::License" => 0,
     "Dist::Zilla::Plugin::MakeMaker" => 0,
     "Dist::Zilla::Plugin::MakeMaker::Awesome" => 0,
@@ -75,7 +76,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.018",
+  "VERSION" => "0.019",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -102,6 +103,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::Git::Push" => 0,
   "Dist::Zilla::Plugin::Git::Tag" => 0,
   "Dist::Zilla::Plugin::GithubMeta" => 0,
+  "Dist::Zilla::Plugin::InstallGuide" => 0,
   "Dist::Zilla::Plugin::License" => 0,
   "Dist::Zilla::Plugin::MakeMaker" => 0,
   "Dist::Zilla::Plugin::MakeMaker::Awesome" => 0,

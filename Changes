@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.019     2015-09-08 18:24:07 EDT
   - Generate INSTALL document
   - Add CONTRIBUTING.md to minting profile, and exclude root-level CONTRIBUTING
     documents from distribution gathering
