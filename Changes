@@ -2,6 +2,7 @@
   - Generate INSTALL document
   - Add CONTRIBUTING.md to minting profile, and exclude root-level CONTRIBUTING
     documents from distribution gathering
+  - Allow setting an empty value for github_user to use [GithubMeta] default
 
 0.018     2015-09-02 19:03:32 EDT
   - Allow for version rewriting in script or bin in git commits

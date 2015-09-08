@@ -18,7 +18,9 @@ sub configure {
 	}
 	
 	my $user = $self->payload->{github_user} // 'Grinnz';
-	$self->add_plugins([GithubMeta => { issues => 1, user => $user }]);
+	my %githubmeta_config = (issues => 1);
+	$githubmeta_config{user} = $user if length $user;
+	$self->add_plugins([GithubMeta => \%githubmeta_config]);
 	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root' }]);
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
@@ -186,7 +188,9 @@ Additionally, the following options are provided.
  github_user = gitster
 
 Set the user whose repository should be linked in metadata. Defaults to
-C<Grinnz>, change this when the main repository is elsewhere.
+C<Grinnz>, change this when the main repository is elsewhere. Set to an empty
+string value to use the GitHub remote URL as found in the local repository, as
+L<Dist::Zilla::Plugin::GithubMeta> does by default.
 
 =head2 installer
 

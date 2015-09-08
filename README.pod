@@ -119,7 +119,9 @@ Additionally, the following options are provided.
  github_user = gitster
 
 Set the user whose repository should be linked in metadata. Defaults to
-C<Grinnz>, change this when the main repository is elsewhere.
+C<Grinnz>, change this when the main repository is elsewhere. Set to an empty
+string value to use the GitHub remote URL as found in the local repository, as
+L<Dist::Zilla::Plugin::GithubMeta> does by default.
 
 =head2 installer
 
