@@ -18,6 +18,7 @@ requires 'Dist::Zilla::Plugin::Git::Init';
 requires 'Dist::Zilla::Plugin::Git::Push';
 requires 'Dist::Zilla::Plugin::Git::Tag';
 requires 'Dist::Zilla::Plugin::GithubMeta';
+requires 'Dist::Zilla::Plugin::InstallGuide';
 requires 'Dist::Zilla::Plugin::License';
 requires 'Dist::Zilla::Plugin::MakeMaker';
 requires 'Dist::Zilla::Plugin::MakeMaker::Awesome';

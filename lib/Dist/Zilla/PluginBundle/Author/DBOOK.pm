@@ -25,13 +25,14 @@ sub configure {
 	# Add this bundle as develop requires
 	$self->add_plugins([Prereqs => 'Self_Prereq' => { -phase => 'develop', (blessed $self) => $self->VERSION }]);
 	
-	my @from_release = qw(LICENSE META.json);
+	my @from_release = qw(INSTALL LICENSE META.json);
 	if ($installer =~ /^ModuleBuild/) {
 		push @from_release, 'Build.PL';
 	} else {
 		push @from_release, 'Makefile.PL';
 	}
-	my @installer_files = qw(Build.PL Makefile.PL);
+	my @ignore_files = qw(Build.PL Makefile.PL);
+	my $ignore_match = '^CONTRIBUTING\.';
 	my @dirty_files = qw(dist.ini Changes README.pod);
 	my $versioned_match = '^(?:lib|script|bin)/';
 	
@@ -54,13 +55,13 @@ sub configure {
 		$self->add_plugins('PodCoverageTests') unless $self->payload->{pod_tests} eq 'syntax';
 	}
 	
-	$self->add_plugins(['Git::GatherDir' => { exclude_filename => [@installer_files, @from_release] }]);
+	$self->add_plugins(['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_release], exclude_match => $ignore_match }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
 	$self->add_plugins([ExecDir => 'ScriptDir' => { dir => 'script' }]);
 	$self->add_plugins($installer);
-	$self->add_plugins(qw/Manifest TestRelease ConfirmRelease/);
+	$self->add_plugins(qw/InstallGuide Manifest TestRelease ConfirmRelease/);
 	$self->add_plugins($ENV{FAKE_RELEASE} ? 'FakeRelease' : 'UploadToCPAN');
 }
 
@@ -117,6 +118,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
  [CopyFilesFromRelease]
+ filename = INSTALL
  filename = LICENSE
  filename = META.json
  filename = Makefile.PL
@@ -126,6 +128,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
+ allow_dirty = INSTALL
  allow_dirty = LICENSE
  allow_dirty = META.json
  allow_dirty = Makefile.PL
@@ -138,10 +141,12 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [Git::Push]
  
  [Git::GatherDir]
+ exclude_filename = INSTALL
  exclude_filename = LICENSE
  exclude_filename = META.json
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
+ exclude_match = ^CONTRIBUTING\.
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
@@ -154,6 +159,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  dir = script
  [ShareDir]
  [MakeMaker]
+ [InstallGuide]
  [Manifest]
  [TestRelease]
  [ConfirmRelease]
