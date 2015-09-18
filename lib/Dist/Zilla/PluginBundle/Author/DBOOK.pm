@@ -169,7 +169,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
 This bundle assumes that your git repo has the following: a L<cpanfile> with
 the dist's prereqs, a C<Changes> populated for the current version (see
 L<Dist::Zilla::Plugin::NextRelease>), and a C<.gitignore> including
-C<Name-Of-Dist-*> but not C<Makefile.PL>/C<Build.PL> or C<META.json>.
+C</Name-Of-Dist-*> but not C<Makefile.PL>/C<Build.PL> or C<META.json>.
 
 To test releasing, set the env var C<FAKE_RELEASE=1> to run everything except
 the upload to CPAN.
