@@ -43,6 +43,10 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
+ allow_dirty = INSTALL
+ allow_dirty = LICENSE
+ allow_dirty = META.json
+ allow_dirty = Makefile.PL
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T

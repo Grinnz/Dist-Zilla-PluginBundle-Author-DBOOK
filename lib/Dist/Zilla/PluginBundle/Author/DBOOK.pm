@@ -39,7 +39,7 @@ sub configure {
 	# @Git and versioning
 	$self->add_plugins(
 		'CheckChangesHasContent',
-		['Git::Check' => { allow_dirty => \@dirty_files }],
+		['Git::Check' => { allow_dirty => [@dirty_files, @from_build] }],
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
 		['Git::Commit' => { allow_dirty => [@dirty_files, @from_build], allow_dirty_match => $versioned_match, add_files_in => '/' }],
@@ -111,6 +111,10 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
+ allow_dirty = INSTALL
+ allow_dirty = LICENSE
+ allow_dirty = META.json
+ allow_dirty = Makefile.PL
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
