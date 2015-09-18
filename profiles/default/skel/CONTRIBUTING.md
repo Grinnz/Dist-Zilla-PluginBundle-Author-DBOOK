@@ -16,13 +16,13 @@ Dist::Zilla to create a tarball.  See below for guidance.
 If you have App::cpanminus 1.6 or later installed, you can use
 [cpanm](https://metacpan.org/pod/cpanm) to satisfy dependencies like this:
 
-    $ cpanm --installdeps .
+    $ cpanm --installdeps --with-develop .
 
 You can also run this command (or any other cpanm command) without installing
 App::cpanminus first, using the fatpacked `cpanm` script via curl or wget:
 
-    $ curl -L https://cpanmin.us | perl - --installdeps .
-    $ wget -qO - https://cpanmin.us | perl - --installdeps .
+    $ curl -L https://cpanmin.us | perl - --installdeps --with-develop .
+    $ wget -qO - https://cpanmin.us | perl - --installdeps --with-develop .
 
 Otherwise, look for either a `cpanfile` or `META.json` file for a list of
 dependencies to satisfy.
@@ -65,7 +65,7 @@ When you get back, Dist::Zilla should be ready for you.
 
 Then you need to install any plugins specific to this distribution:
 
-    $ cpanm --installdeps --with-develop .
+    $ dzil authordeps --versions | cpanm
 
 Once installed, here are some dzil commands you might try:
 

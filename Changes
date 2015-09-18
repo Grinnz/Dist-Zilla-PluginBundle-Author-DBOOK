@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - Update copied files on build instead of release
+  - Don't add self to develop-requires
 
 0.019     2015-09-08 18:24:07 EDT
   - Generate INSTALL document

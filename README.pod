@@ -38,10 +38,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  directory = eg
  directory = examples
  
- [Prereqs / Self_Prereq]
- -phase = develop
- Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
- 
  [CheckChangesHasContent]
  [Git::Check]
  allow_dirty = dist.ini
@@ -50,11 +46,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
- [CopyFilesFromRelease]
- filename = INSTALL
- filename = LICENSE
- filename = META.json
- filename = Makefile.PL
  [Git::Commit]
  add_files_in = /
  allow_dirty_match = ^(?:lib|script|bin)/
@@ -80,6 +71,11 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
  exclude_match = ^CONTRIBUTING\.
+ [CopyFilesFromBuild]
+ copy = INSTALL
+ copy = LICENSE
+ copy = META.json
+ copy = Makefile.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]

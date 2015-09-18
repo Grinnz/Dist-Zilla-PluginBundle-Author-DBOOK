@@ -24,14 +24,12 @@ sub configure {
 	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root' }]);
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
-	# Add this bundle as develop requires
-	$self->add_plugins([Prereqs => 'Self_Prereq' => { -phase => 'develop', (blessed $self) => $self->VERSION }]);
 	
-	my @from_release = qw(INSTALL LICENSE META.json);
+	my @from_build = qw(INSTALL LICENSE META.json);
 	if ($installer =~ /^ModuleBuild/) {
-		push @from_release, 'Build.PL';
+		push @from_build, 'Build.PL';
 	} else {
-		push @from_release, 'Makefile.PL';
+		push @from_build, 'Makefile.PL';
 	}
 	my @ignore_files = qw(Build.PL Makefile.PL);
 	my $ignore_match = '^CONTRIBUTING\.';
@@ -44,8 +42,7 @@ sub configure {
 		['Git::Check' => { allow_dirty => \@dirty_files }],
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
-		[CopyFilesFromRelease => { filename => \@from_release }],
-		['Git::Commit' => { allow_dirty => [@dirty_files, @from_release], allow_dirty_match => $versioned_match, add_files_in => '/' }],
+		['Git::Commit' => { allow_dirty => [@dirty_files, @from_build], allow_dirty_match => $versioned_match, add_files_in => '/' }],
 		'Git::Tag',
 		[BumpVersionAfterRelease => { munge_makefile_pl => 0 }],
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => $versioned_match, commit_msg => 'Bump version' }],
@@ -57,7 +54,9 @@ sub configure {
 		$self->add_plugins('PodCoverageTests') unless $self->payload->{pod_tests} eq 'syntax';
 	}
 	
-	$self->add_plugins(['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_release], exclude_match => $ignore_match }]);
+	$self->add_plugins(
+		['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_build], exclude_match => $ignore_match }],
+		[CopyFilesFromBuild => { copy => \@from_build }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExtraTests ExecDir ShareDir/);
@@ -107,10 +106,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  directory = eg
  directory = examples
  
- [Prereqs / Self_Prereq]
- -phase = develop
- Dist::Zilla::PluginBundle::Author::DBOOK = $VERSION
- 
  [CheckChangesHasContent]
  [Git::Check]
  allow_dirty = dist.ini
@@ -119,11 +114,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
- [CopyFilesFromRelease]
- filename = INSTALL
- filename = LICENSE
- filename = META.json
- filename = Makefile.PL
  [Git::Commit]
  add_files_in = /
  allow_dirty_match = ^(?:lib|script|bin)/
@@ -149,6 +139,11 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
  exclude_match = ^CONTRIBUTING\.
+ [CopyFilesFromBuild]
+ copy = INSTALL
+ copy = LICENSE
+ copy = META.json
+ copy = Makefile.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
