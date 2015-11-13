@@ -44,6 +44,7 @@ requires 'Dist::Zilla::Plugin::UploadToCPAN';
 requires 'Dist::Zilla::Role::MintingProfile::ShareDir';
 requires 'Dist::Zilla::Role::PluginBundle::Config::Slicer';
 requires 'Dist::Zilla::Role::PluginBundle::Easy';
+requires 'Dist::Zilla::Role::PluginBundle::PluginRemover';
 requires 'Moose';
 requires 'Scalar::Util';
 test_requires 'Test::More' => '0.88';

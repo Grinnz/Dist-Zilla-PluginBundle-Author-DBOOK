@@ -2,7 +2,9 @@ package Dist::Zilla::PluginBundle::Author::DBOOK;
 
 use Moose;
 use Scalar::Util 'blessed';
-with 'Dist::Zilla::Role::PluginBundle::Easy', 'Dist::Zilla::Role::PluginBundle::Config::Slicer';
+with 'Dist::Zilla::Role::PluginBundle::Easy',
+  'Dist::Zilla::Role::PluginBundle::Config::Slicer',
+  'Dist::Zilla::Role::PluginBundle::PluginRemover';
 
 our $VERSION = '0.021';
 
@@ -179,8 +181,9 @@ the upload to CPAN.
 =head1 OPTIONS
 
 This bundle composes the L<Dist::Zilla::Role::PluginBundle::Config::Slicer>
-role, so options for any included plugin may be specified in that format.
-Additionally, the following options are provided.
+role, so options for any included plugin may be specified in that format. It
+also composes L<Dist::Zilla::Role::PluginBundle::PluginRemover> so that plugins
+may be removed. Additionally, the following options are provided.
 
 =head2 github_user
 
