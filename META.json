@@ -4,7 +4,7 @@
       "Dan Book <dbook@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 5.041, CPAN::Meta::Converter version 2.150005",
+   "generated_by" : "Dist::Zilla version 5.043, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "artistic_2"
    ],
@@ -98,11 +98,11 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/DBOOK.pm",
-         "version" : "0.021"
+         "version" : "0.022"
       },
       "Dist::Zilla::PluginBundle::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/DBOOK.pm",
-         "version" : "0.021"
+         "version" : "0.022"
       }
    },
    "release_status" : "stable",
@@ -117,7 +117,7 @@
          "web" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK"
       }
    },
-   "version" : "0.021",
+   "version" : "0.022",
    "x_contributors" : [
       "Dan Book <grinnz@gmail.com>",
       "Dan Book <grinnz@grinnz.com>"

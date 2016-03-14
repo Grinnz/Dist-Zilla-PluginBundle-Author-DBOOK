@@ -86,12 +86,12 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [MetaJSON]
  [License]
  [ReadmeAnyFromPod]
- [ExtraTests]
  [ExecDir]
  [ExecDir / ScriptDir]
  dir = script
  [ShareDir]
  [MakeMaker]
+ [RunExtraTests]
  [InstallGuide]
  [Manifest]
  [TestRelease]
