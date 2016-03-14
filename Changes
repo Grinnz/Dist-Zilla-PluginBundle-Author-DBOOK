@@ -1,5 +1,8 @@
 {{$NEXT}}
-  - Use [RunExtraTests] instead of [ExtraTests]
+
+0.022     2016-03-14 17:38:19 EDT
+  - Use [RunExtraTests] instead of [ExtraTests], so xt/ tests will not be
+    copied to t/ in the released distribution.
 
 0.021     2015-11-13 13:24:55 EST
   - Add PluginRemover role to allow -remove option
