@@ -24,6 +24,7 @@ sub configure {
 	$githubmeta_config{user} = $user if length $user;
 	$self->add_plugins([GithubMeta => \%githubmeta_config]);
 	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root' }]);
+	$self->add_plugins('MetaConfig');
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
 	
@@ -55,6 +56,9 @@ sub configure {
 		$self->add_plugins('PodSyntaxTests');
 		$self->add_plugins('PodCoverageTests') unless $self->payload->{pod_tests} eq 'syntax';
 	}
+	
+	# Report prereqs
+	$self->add_plugins('Test::ReportPrereqs');
 	
 	$self->add_plugins(
 		['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_build], exclude_match => $ignore_match }],
@@ -97,6 +101,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = README.pod
  location = root
  
+ [MetaConfig]
  [MetaProvides::Package]
  [Prereqs::FromCPANfile]
  [Git::Contributors]
@@ -138,6 +143,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  commit_msg = Bump version
  [Git::Push]
  
+ [Test::ReportPrereqs]
  [Git::GatherDir]
  exclude_filename = INSTALL
  exclude_filename = LICENSE
