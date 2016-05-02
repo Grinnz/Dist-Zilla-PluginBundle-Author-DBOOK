@@ -3,7 +3,7 @@ package Dist::Zilla::MintingProfile::Author::DBOOK;
 use Moose;
 with 'Dist::Zilla::Role::MintingProfile::ShareDir';
 
-our $VERSION = '0.024';
+our $VERSION = '0.025';
 
 1;
 

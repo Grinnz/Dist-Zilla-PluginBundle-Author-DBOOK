@@ -6,7 +6,7 @@ with 'Dist::Zilla::Role::PluginBundle::Easy',
   'Dist::Zilla::Role::PluginBundle::Config::Slicer',
   'Dist::Zilla::Role::PluginBundle::PluginRemover';
 
-our $VERSION = '0.024';
+our $VERSION = '0.025';
 
 sub configure {
 	my $self = shift;
