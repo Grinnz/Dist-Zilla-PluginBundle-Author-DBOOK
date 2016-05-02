@@ -105,11 +105,11 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/DBOOK.pm",
-         "version" : "0.023"
+         "version" : "0.024"
       },
       "Dist::Zilla::PluginBundle::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/DBOOK.pm",
-         "version" : "0.023"
+         "version" : "0.024"
       }
    },
    "release_status" : "stable",
@@ -124,7 +124,7 @@
          "web" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK"
       }
    },
-   "version" : "0.023",
+   "version" : "0.024",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.022000"
@@ -309,7 +309,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v0.023",
+                  "tag" : "v0.024",
                   "tag_format" : "v%v",
                   "tag_message" : "v%v"
                },

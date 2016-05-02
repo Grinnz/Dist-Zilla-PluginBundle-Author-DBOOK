@@ -18,6 +18,7 @@ sub configure {
 		die "Invalid installer $installer. Possible installers: " .
 			join(', ', sort keys %accepted_installers) . "\n";
 	}
+	my $install_with_makemaker = ($installer =~ /^ModuleBuild/) ? 0 : 1;
 	
 	my $user = $self->payload->{github_user} // 'Grinnz';
 	my %githubmeta_config = (issues => 1);
@@ -29,11 +30,7 @@ sub configure {
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
 	
 	my @from_build = qw(INSTALL LICENSE META.json);
-	if ($installer =~ /^ModuleBuild/) {
-		push @from_build, 'Build.PL';
-	} else {
-		push @from_build, 'Makefile.PL';
-	}
+	push @from_build, $install_with_makemaker ? 'Makefile.PL' : 'Build.PL';
 	my @ignore_files = qw(Build.PL Makefile.PL);
 	my $ignore_match = '^CONTRIBUTING\.';
 	my @dirty_files = qw(dist.ini Changes README.pod);
@@ -58,7 +55,8 @@ sub configure {
 	}
 	
 	# Report prereqs
-	$self->add_plugins('Test::ReportPrereqs');
+	my $version_extractor = $install_with_makemaker ? 'ExtUtils::MakeMaker' : 'Module::Metadata';
+	$self->add_plugins(['Test::ReportPrereqs' => { version_extractor => $version_extractor }]);
 	
 	$self->add_plugins(
 		['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_build], exclude_match => $ignore_match }],

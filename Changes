@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - Use Module::Metadata as the version_extractor for Test::ReportPrereqs if
+    ExtUtils::MakeMaker is not the installer
 
 0.023     2016-05-02 13:33:42 EDT
   - Add [MetaConfig] and [Test::ReportPrereqs]
