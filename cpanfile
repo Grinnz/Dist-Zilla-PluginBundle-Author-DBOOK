@@ -1,4 +1,5 @@
 requires 'perl' => '5.010';
+requires 'Data::Section';
 requires 'Dist::Zilla';
 requires 'Dist::Zilla::Plugin::BumpVersionAfterRelease';
 requires 'Dist::Zilla::Plugin::CheckChangesHasContent';
