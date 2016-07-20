@@ -31,7 +31,7 @@ sub configure {
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
 	
-	my @from_build = qw(INSTALL LICENSE META.json CONTRIBUTING.md);
+	my @from_build = qw(INSTALL LICENSE CONTRIBUTING.md META.json);
 	push @from_build, $install_with_makemaker ? 'Makefile.PL' : 'Build.PL';
 	my @ignore_files = qw(Build.PL Makefile.PL);
 	my @dirty_files = qw(dist.ini Changes README.pod);
@@ -100,6 +100,10 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = README.pod
  location = root
  
+ [GenerateFile / Generate_Contrib]
+ filename = CONTRIBUTING.md
+ content = ...
+ 
  [MetaConfig]
  [MetaProvides::Package]
  [Prereqs::FromCPANfile]
@@ -119,6 +123,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = README.pod
  allow_dirty = INSTALL
  allow_dirty = LICENSE
+ allow_dirty = CONTRIBUTING.md
  allow_dirty = META.json
  allow_dirty = Makefile.PL
  [RewriteVersion]
@@ -132,6 +137,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = README.pod
  allow_dirty = INSTALL
  allow_dirty = LICENSE
+ allow_dirty = CONTRIBUTING.md
  allow_dirty = META.json
  allow_dirty = Makefile.PL
  [Git::Tag]
@@ -146,13 +152,14 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [Git::GatherDir]
  exclude_filename = INSTALL
  exclude_filename = LICENSE
+ exclude_filename = CONTRIBUTING.md
  exclude_filename = META.json
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
- exclude_match = ^CONTRIBUTING\.
  [CopyFilesFromBuild]
  copy = INSTALL
  copy = LICENSE
+ copy = CONTRIBUTING.md
  copy = META.json
  copy = Makefile.PL
  [PruneCruft]

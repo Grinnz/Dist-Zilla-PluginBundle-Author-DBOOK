@@ -27,6 +27,10 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = README.pod
  location = root
  
+ [GenerateFile / Generate_Contrib]
+ filename = CONTRIBUTING.md
+ content = ...
+ 
  [MetaConfig]
  [MetaProvides::Package]
  [Prereqs::FromCPANfile]
@@ -46,6 +50,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = README.pod
  allow_dirty = INSTALL
  allow_dirty = LICENSE
+ allow_dirty = CONTRIBUTING.md
  allow_dirty = META.json
  allow_dirty = Makefile.PL
  [RewriteVersion]
@@ -59,6 +64,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = README.pod
  allow_dirty = INSTALL
  allow_dirty = LICENSE
+ allow_dirty = CONTRIBUTING.md
  allow_dirty = META.json
  allow_dirty = Makefile.PL
  [Git::Tag]
@@ -73,13 +79,14 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [Git::GatherDir]
  exclude_filename = INSTALL
  exclude_filename = LICENSE
+ exclude_filename = CONTRIBUTING.md
  exclude_filename = META.json
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
- exclude_match = ^CONTRIBUTING\.
  [CopyFilesFromBuild]
  copy = INSTALL
  copy = LICENSE
+ copy = CONTRIBUTING.md
  copy = META.json
  copy = Makefile.PL
  [PruneCruft]
