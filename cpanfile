@@ -54,3 +54,4 @@ test_requires 'Git::Wrapper';
 test_requires 'Path::Tiny' => '0.079'; # relative method algorithm
 test_requires 'Test::DZil';
 test_requires 'Test::More' => '0.88';
+test_requires 'Test::File::ShareDir::Module';
