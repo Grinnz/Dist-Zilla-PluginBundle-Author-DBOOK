@@ -1,11 +1,12 @@
 package Dist::Zilla::PluginBundle::Author::DBOOK;
 
 use Moose;
-use Data::Section -setup;
 use Scalar::Util 'blessed';
 with 'Dist::Zilla::Role::PluginBundle::Easy',
   'Dist::Zilla::Role::PluginBundle::Config::Slicer',
   'Dist::Zilla::Role::PluginBundle::PluginRemover';
+use namespace::clean;
+use Data::Section -setup;
 
 our $VERSION = '0.025';
 
@@ -71,6 +72,7 @@ sub configure {
 	$self->add_plugins($ENV{FAKE_RELEASE} ? 'FakeRelease' : 'UploadToCPAN');
 }
 
+__PACKAGE__->meta->make_immutable;
 1;
 
 =head1 NAME

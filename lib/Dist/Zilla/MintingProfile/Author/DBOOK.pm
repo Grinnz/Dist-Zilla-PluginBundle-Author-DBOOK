@@ -2,9 +2,11 @@ package Dist::Zilla::MintingProfile::Author::DBOOK;
 
 use Moose;
 with 'Dist::Zilla::Role::MintingProfile::ShareDir';
+use namespace::clean;
 
 our $VERSION = '0.025';
 
+__PACKAGE__->meta->make_immutable;
 1;
 
 =head1 NAME

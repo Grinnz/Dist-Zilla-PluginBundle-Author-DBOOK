@@ -74,7 +74,8 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Role::PluginBundle::Easy" => 0,
     "Dist::Zilla::Role::PluginBundle::PluginRemover" => 0,
     "Moose" => 0,
-    "Scalar::Util" => 0
+    "Scalar::Util" => 0,
+    "namespace::clean" => 0
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
@@ -150,7 +151,8 @@ my %FallbackPrereqs = (
   "Scalar::Util" => 0,
   "Test::DZil" => 0,
   "Test::File::ShareDir::Module" => 0,
-  "Test::More" => "0.88"
+  "Test::More" => "0.88",
+  "namespace::clean" => 0
 );
 
 
