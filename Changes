@@ -1,5 +1,6 @@
 {{$NEXT}}
   - Generate CONTRIBUTING.md in build and copy from build to root
+  - Add basic bundle tests
 
 0.024     2016-05-02 14:25:27 EDT
   - Use Module::Metadata as the version_extractor for Test::ReportPrereqs if

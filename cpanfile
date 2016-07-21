@@ -50,4 +50,7 @@ requires 'Dist::Zilla::Role::PluginBundle::Easy';
 requires 'Dist::Zilla::Role::PluginBundle::PluginRemover';
 requires 'Moose';
 requires 'Scalar::Util';
+test_requires 'Git::Wrapper';
+test_requires 'Path::Tiny' => '0.079'; # relative method algorithm
+test_requires 'Test::DZil';
 test_requires 'Test::More' => '0.88';

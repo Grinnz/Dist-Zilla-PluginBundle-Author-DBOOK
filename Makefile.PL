@@ -79,6 +79,9 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
+    "Git::Wrapper" => 0,
+    "Path::Tiny" => "0.079",
+    "Test::DZil" => 0,
     "Test::More" => "0.88"
   },
   "VERSION" => "0.025",
@@ -140,8 +143,11 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Role::PluginBundle::PluginRemover" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
+  "Git::Wrapper" => 0,
   "Moose" => 0,
+  "Path::Tiny" => "0.079",
   "Scalar::Util" => 0,
+  "Test::DZil" => 0,
   "Test::More" => "0.88"
 );
 
