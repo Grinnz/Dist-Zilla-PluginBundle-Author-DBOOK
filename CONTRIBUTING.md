@@ -4,7 +4,7 @@ Thank you for considering contributing to this distribution.  This file
 contains instructions that will help you work with the source code.
 
 The distribution is managed with [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla).
-This means than many of the usual files you might expect are not in the
+This means that many of the usual files you might expect are not in the
 repository, but are generated at release time.  Some generated files are kept
 in the repository as a convenience (e.g. Build.PL/Makefile.PL and META.json).
 
