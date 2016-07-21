@@ -5,6 +5,8 @@ use Path::Tiny;
 use Test::More;
 use Test::DZil;
 
+eval { Git::Wrapper->new('.')->version; 1 } or plan skip_all => 'git is not available for testing';
+
 my $tzil = Builder->from_config(
   { dist_root => 'does-not-exist' },
   {
@@ -21,8 +23,6 @@ my $tzil = Builder->from_config(
 );
 
 my $git = Git::Wrapper->new(path($tzil->tempdir)->child('source'));
-eval { $git->status; 1 } or plan skip_all => 'git is not available for testing';
-
 $git->init;
 $git->add(qw(dist.ini cpanfile Changes .gitignore lib/DZT/Sample.pm));
 
