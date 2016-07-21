@@ -5,7 +5,7 @@ use Path::Tiny;
 use Test::More;
 use Test::DZil;
 
-eval { Git::Wrapper->new('.')->version; 1 } or plan skip_all => 'git is not available for testing';
+eval { Git::Wrapper->new(Path::Tiny->cwd)->version; 1 } or plan skip_all => 'git is not available for testing';
 
 my $tzil = Builder->from_config(
   { dist_root => 'does-not-exist' },
