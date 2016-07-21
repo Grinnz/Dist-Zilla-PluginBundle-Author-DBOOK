@@ -15,6 +15,10 @@ my $tzil = Minter->_new_from_profile(
   { global_config_root => 't/minter/global' },
 );
 
+# prevent Git::Init from trying to make a commit
+my $init_plugin = $tzil->plugin_named('Git::Init') // die 'Did not find Git::Init plugin';
+$init_plugin->meta->get_attribute('commit')->set_value($init_plugin, 0);
+
 $tzil->mint_dist;
 
 my @expected_files = sort qw(
