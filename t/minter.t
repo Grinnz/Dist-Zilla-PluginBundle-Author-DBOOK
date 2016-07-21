@@ -39,6 +39,9 @@ is_deeply [sort @found_files], \@expected_files, 'minted the correct files';
 
 my $pm = $tzil->slurp_file('mint/lib/DZT/Minty.pm');
 my $distini = $tzil->slurp_file('mint/dist.ini');
+my $gitignore = $tzil->slurp_file('mint/.gitignore');
+my $travisyml = $tzil->slurp_file('mint/.travis.yml');
+my $changes = $tzil->slurp_file('mint/Changes');
 
 like $pm, qr/^package DZT::Minty;$/m, 'right package declaration';
 like $pm, qr/^use strict;$/m, 'module uses strict';
@@ -48,5 +51,11 @@ like $pm, qr/^=head1 NAME\n\nDZT::Minty - /m, 'right name section in pod';
 
 like $distini, qr/^name\s*=\s*DZT-Minty$/m, 'right dist name';
 like $distini, qr/^\[\@Author::DBOOK\]$/m, 'author bundle included';
+
+like $gitignore, qr/^\/DZT-Minty-\*$/m, 'builds ignored in git';
+
+like $travisyml, qr/^language:\s*perl$/m, 'travis configured for perl';
+
+like $changes, qr/^\{\{\$NEXT\}\}$/m, 'changes file set up';
 
 done_testing;
