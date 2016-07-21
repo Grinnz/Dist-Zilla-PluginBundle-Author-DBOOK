@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.025     2016-07-21 14:37:00 EDT
   - Generate CONTRIBUTING.md in build and copy from build to root
   - Add basic bundle and minter tests
   - Add perl 5.24 to travis config in minting profile
