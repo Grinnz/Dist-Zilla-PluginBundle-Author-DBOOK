@@ -169,6 +169,11 @@
             "version" : "0.161170"
          },
          {
+            "class" : "Dist::Zilla::Plugin::GenerateFile",
+            "name" : "@Author::DBOOK/Generate_Contrib",
+            "version" : "6.006"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::MetaConfig",
             "name" : "@Author::DBOOK/MetaConfig",
             "version" : "6.006"
@@ -233,6 +238,7 @@
                },
                "Dist::Zilla::Role::Git::DirtyFiles" : {
                   "allow_dirty" : [
+                     "CONTRIBUTING.md",
                      "Changes",
                      "INSTALL",
                      "LICENSE",
@@ -283,6 +289,7 @@
                },
                "Dist::Zilla::Role::Git::DirtyFiles" : {
                   "allow_dirty" : [
+                     "CONTRIBUTING.md",
                      "Changes",
                      "INSTALL",
                      "LICENSE",
@@ -401,6 +408,7 @@
                "Dist::Zilla::Plugin::GatherDir" : {
                   "exclude_filename" : [
                      "Build.PL",
+                     "CONTRIBUTING.md",
                      "INSTALL",
                      "LICENSE",
                      "META.json",
@@ -408,7 +416,6 @@
                      "Makefile.PL"
                   ],
                   "exclude_match" : [
-                     "^CONTRIBUTING\\.",
                      "^profiles/default/skel/"
                   ],
                   "follow_symlinks" : 0,
