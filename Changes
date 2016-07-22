@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.026     2016-07-22 02:07:45 EDT
   - Bump required version of [Test::ReportPrereqs] for Module::Metadata version extractor option
 
 0.025     2016-07-21 14:37:00 EDT
