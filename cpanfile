@@ -41,7 +41,7 @@ requires 'Dist::Zilla::Plugin::RewriteVersion';
 requires 'Dist::Zilla::Plugin::RunExtraTests';
 requires 'Dist::Zilla::Plugin::ShareDir';
 requires 'Dist::Zilla::Plugin::TemplateModule';
-requires 'Dist::Zilla::Plugin::Test::ReportPrereqs';
+requires 'Dist::Zilla::Plugin::Test::ReportPrereqs' => '0.022'; # Module::Metadata option
 requires 'Dist::Zilla::Plugin::TestRelease';
 requires 'Dist::Zilla::Plugin::UploadToCPAN';
 requires 'Dist::Zilla::Role::MintingProfile::ShareDir';
