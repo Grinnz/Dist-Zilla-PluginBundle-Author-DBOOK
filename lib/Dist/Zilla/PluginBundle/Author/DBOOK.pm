@@ -62,7 +62,7 @@ sub configure {
 	
 	$self->add_plugins(
 		['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_build] }],
-		[CopyFilesFromBuild => { copy => \@from_build }]);
+		[Regenerate => { filenames => \@from_build }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExecDir ShareDir/);
@@ -158,12 +158,12 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = META.json
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
- [CopyFilesFromBuild]
- copy = INSTALL
- copy = LICENSE
- copy = CONTRIBUTING.md
- copy = META.json
- copy = Makefile.PL
+ [Regenerate]
+ filename = INSTALL
+ filename = LICENSE
+ filename = CONTRIBUTING.md
+ filename = META.json
+ filename = Makefile.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]

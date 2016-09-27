@@ -83,12 +83,12 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = META.json
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
- [CopyFilesFromBuild]
- copy = INSTALL
- copy = LICENSE
- copy = CONTRIBUTING.md
- copy = META.json
- copy = Makefile.PL
+ [Regenerate]
+ filename = INSTALL
+ filename = LICENSE
+ filename = CONTRIBUTING.md
+ filename = META.json
+ filename = Makefile.PL
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
