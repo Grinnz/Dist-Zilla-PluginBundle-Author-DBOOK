@@ -1,5 +1,8 @@
 {{$NEXT}}
   - Use [Regenerate] instead of [CopyFilesFromBuild] to regenerate files in root
+  - Because of this, files previously copied from the build to the repository
+    during `dzil build`, `dzil test`, or `dzil release` will now require running
+    `dzil regenerate` to update.
 
 0.026     2016-07-22 02:07:45 EDT
   - Bump required version of [Test::ReportPrereqs] for Module::Metadata version extractor option
