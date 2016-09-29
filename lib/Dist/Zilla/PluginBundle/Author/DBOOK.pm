@@ -187,6 +187,13 @@ the dist's prereqs, a C<Changes> populated for the current version (see
 L<Dist::Zilla::Plugin::NextRelease>), and a C<.gitignore> including
 C</Name-Of-Dist-*> but not C<Makefile.PL>/C<Build.PL> or C<META.json>.
 
+To faciliate building the distribution for testing or installation without
+L<Dist::Zilla>, and provide important information about the distribution in
+the repository, several files can be copied to the repository from the build
+by running L<dzil regenerate|Dist::Zilla::App::Command::regenerate>. These
+files are: C<CONTRIBUTING.md>, C<INSTALL>, C<LICENSE>,
+C<Makefile.PL>/C<Build.PL>, and C<META.json>.
+
 To test releasing, set the env var C<FAKE_RELEASE=1> to run everything except
 the upload to CPAN.
 
