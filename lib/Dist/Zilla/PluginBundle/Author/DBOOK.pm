@@ -44,7 +44,8 @@ sub configure {
 		['Git::Check' => { allow_dirty => \@dirty_files }],
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
-		['Git::Commit' => { allow_dirty => \@dirty_files, add_files_in => '/' }],
+		[CopyFilesFromRelease => { filename => \@from_build }],
+		['Git::Commit' => { allow_dirty => [@dirty_files, @from_build], add_files_in => '/' }],
 		'Git::Tag',
 		[BumpVersionAfterRelease => { munge_makefile_pl => 0, munge_build_pl => 0 }],
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => $versioned_match, commit_msg => 'Bump version' }],
@@ -62,8 +63,7 @@ sub configure {
 	
 	$self->add_plugins(
 		['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_build] }],
-		[Regenerate => { filenames => \@from_build }],
-		['Regenerate::AfterReleasers' => { plugins => ['@Author::DBOOK/Readme_Github'] }]);
+		['Regenerate::AfterReleasers' => { plugins => ['@Author::DBOOK/Readme_Github', '@Author::DBOOK/CopyFilesFromRelease'] }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExecDir ShareDir/);
@@ -128,11 +128,22 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [RewriteVersion]
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
+ [CopyFilesFromRelease]
+ filename = INSTALL
+ filename = LICENSE
+ filename = CONTRIBUTING.md
+ filename = META.json
+ filename = Makefile.PL
  [Git::Commit]
  add_files_in = /
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
+ allow_dirty = INSTALL
+ allow_dirty = LICENSE
+ allow_dirty = CONTRIBUTING.md
+ allow_dirty = META.json
+ allow_dirty = Makefile.PL
  [Git::Tag]
  [BumpVersionAfterRelease]
  munge_makefile_pl = 0
@@ -150,14 +161,9 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  exclude_filename = META.json
  exclude_filename = Makefile.PL
  exclude_filename = Build.PL
- [Regenerate]
- filename = INSTALL
- filename = LICENSE
- filename = CONTRIBUTING.md
- filename = META.json
- filename = Makefile.PL
  [Regenerate::AfterReleasers]
  plugin = Readme_Github
+ plugin = CopyFilesFromRelease
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
@@ -184,11 +190,11 @@ C</Name-Of-Dist-*> but not C<Makefile.PL>/C<Build.PL> or C<META.json>.
 To faciliate building the distribution for testing or installation without
 L<Dist::Zilla>, and provide important information about the distribution in
 the repository, several files can be copied to the repository from the build
-by running L<dzil regenerate|Dist::Zilla::App::Command::regenerate>. These
-files are: C<CONTRIBUTING.md>, C<INSTALL>, C<LICENSE>,
-C<Makefile.PL>/C<Build.PL>, and C<META.json>. The file C<README.pod> will also
-be generated in the repository (but not the build) by C<dzil regenerate> and
-C<dzil release>.
+by running L<dzil regenerate|Dist::Zilla::App::Command::regenerate>, and are
+copied and committed automatically on release. These files are:
+C<CONTRIBUTING.md>, C<INSTALL>, C<LICENSE>, C<Makefile.PL>/C<Build.PL>, and
+C<META.json>. The file C<README.pod> will also be generated in the repository
+(but not the build) by C<dzil regenerate> and C<dzil release>.
 
 To test releasing, set the env var C<FAKE_RELEASE=1> to run everything except
 the upload to CPAN.
