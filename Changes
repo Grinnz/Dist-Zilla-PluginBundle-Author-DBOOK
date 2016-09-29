@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.030     2016-09-29 15:20:00 EDT
   - Also set munge_build_pl = 0 for BumpVersionAfterRelease
 
 0.029     2016-09-29 15:14:30 EDT
