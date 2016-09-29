@@ -296,9 +296,7 @@
                      "README.pod",
                      "dist.ini"
                   ],
-                  "allow_dirty_match" : [
-                     "(?^:^(?:lib|script|bin)/)"
-                  ],
+                  "allow_dirty_match" : [],
                   "changelog" : "Changes"
                },
                "Dist::Zilla::Role::Git::Repo" : {

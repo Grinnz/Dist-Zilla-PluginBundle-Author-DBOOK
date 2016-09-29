@@ -44,7 +44,7 @@ sub configure {
 		['Git::Check' => { allow_dirty => \@dirty_files }],
 		'RewriteVersion',
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
-		['Git::Commit' => { allow_dirty => \@dirty_files, allow_dirty_match => $versioned_match, add_files_in => '/' }],
+		['Git::Commit' => { allow_dirty => \@dirty_files, add_files_in => '/' }],
 		'Git::Tag',
 		[BumpVersionAfterRelease => { munge_makefile_pl => 0 }],
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => $versioned_match, commit_msg => 'Bump version' }],
@@ -130,7 +130,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
  [Git::Commit]
  add_files_in = /
- allow_dirty_match = ^(?:lib|script|bin)/
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod

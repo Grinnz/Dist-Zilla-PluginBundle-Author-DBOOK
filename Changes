@@ -1,4 +1,5 @@
 {{$NEXT}}
+  - RewriteVersion does not modify files in tree so [Git::Commit] does not need to allow for that
 
 0.028     2016-09-29 15:04:43 EDT
   - Regenerated files no longer need to be allowed in [Git::Check] and [Git::Commit] on release
