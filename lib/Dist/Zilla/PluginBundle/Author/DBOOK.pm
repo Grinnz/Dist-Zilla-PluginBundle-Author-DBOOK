@@ -46,7 +46,7 @@ sub configure {
 		[NextRelease => { format => '%-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T' }],
 		['Git::Commit' => { allow_dirty => \@dirty_files, add_files_in => '/' }],
 		'Git::Tag',
-		[BumpVersionAfterRelease => { munge_makefile_pl => 0 }],
+		[BumpVersionAfterRelease => { munge_makefile_pl => 0, munge_build_pl => 0 }],
 		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => $versioned_match, commit_msg => 'Bump version' }],
 		'Git::Push');
 	
@@ -136,6 +136,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [Git::Tag]
  [BumpVersionAfterRelease]
  munge_makefile_pl = 0
+ munge_build_pl = 0
  [Git::Commit / Commit_Version_Bump]
  allow_dirty_match = ^(?:lib|script|bin)/
  commit_msg = Bump version
