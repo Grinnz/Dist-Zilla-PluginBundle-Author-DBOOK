@@ -26,7 +26,7 @@ sub configure {
 	my %githubmeta_config = (issues => 1);
 	$githubmeta_config{user} = $user if length $user;
 	$self->add_plugins([GithubMeta => \%githubmeta_config]);
-	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root' }]);
+	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root', phase => 'release' }]);
 	$self->add_plugins([GenerateFile => 'Generate_Contrib' => { filename => 'CONTRIBUTING.md', content => [split /\n/, ${$self->section_data('CONTRIBUTING.md')}] }]);
 	$self->add_plugins('MetaConfig');
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
@@ -62,7 +62,8 @@ sub configure {
 	
 	$self->add_plugins(
 		['Git::GatherDir' => { exclude_filename => [@ignore_files, @from_build] }],
-		[Regenerate => { filenames => \@from_build }]);
+		[Regenerate => { filenames => \@from_build }],
+		['Regenerate::AfterReleasers' => { plugins => ['@Author::DBOOK/Readme_Github'] }]);
 	# @Basic, with some modifications
 	$self->add_plugins(qw/PruneCruft ManifestSkip MetaYAML MetaJSON
 		License ReadmeAnyFromPod ExecDir ShareDir/);
@@ -101,6 +102,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  type = pod
  filename = README.pod
  location = root
+ phase = release
  
  [GenerateFile / Generate_Contrib]
  filename = CONTRIBUTING.md
@@ -164,6 +166,8 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = CONTRIBUTING.md
  filename = META.json
  filename = Makefile.PL
+ [Regenerate::AfterReleasers]
+ plugin = Readme_Github
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]

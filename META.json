@@ -459,6 +459,21 @@
             "version" : "0.001000"
          },
          {
+            "class" : "Dist::Zilla::Plugin::Regenerate::AfterReleasers",
+            "config" : {
+               "Dist::Zilla::Plugin::Regenerate::AfterReleasers" : {
+                  "plugins" : [
+                     "@Author::DBOOK/Readme_Github"
+                  ]
+               },
+               "Dist::Zilla::Role::Regenerator" : {
+                  "$Dist::Zilla::Role::Regenerator::VERSION" : "0.001000"
+               }
+            },
+            "name" : "@Author::DBOOK/Regenerate::AfterReleasers",
+            "version" : "0.001000"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::PruneCruft",
             "name" : "@Author::DBOOK/PruneCruft",
             "version" : "6.007"

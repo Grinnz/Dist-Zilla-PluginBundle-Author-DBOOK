@@ -26,6 +26,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  type = pod
  filename = README.pod
  location = root
+ phase = release
  
  [GenerateFile / Generate_Contrib]
  filename = CONTRIBUTING.md
@@ -89,6 +90,8 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = CONTRIBUTING.md
  filename = META.json
  filename = Makefile.PL
+ [Regenerate::AfterReleasers]
+ plugin = Readme_Github
  [PruneCruft]
  [ManifestSkip]
  [MetaYAML]
