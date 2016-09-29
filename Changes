@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.028     2016-09-29 14:00:05 EDT
   - Copy META.json and Makefile.PL from release for version bump commit
 
 0.027     2016-09-29 13:50:21 EDT

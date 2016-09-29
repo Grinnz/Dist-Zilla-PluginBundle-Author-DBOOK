@@ -71,7 +71,12 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [Git::Tag]
  [BumpVersionAfterRelease]
  munge_makefile_pl = 0
+ [CopyFilesFromRelease]
+ filename = META.json
+ filename = Makefile.PL
  [Git::Commit / Commit_Version_Bump]
+ allow_dirty = META.json
+ allow_dirty = Makefile.PL
  allow_dirty_match = ^(?:lib|script|bin)/
  commit_msg = Bump version
  [Git::Push]
