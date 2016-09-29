@@ -32,9 +32,8 @@ sub configure {
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
 	
-	my @from_release = qw(META.json);
-	push @from_release, $install_with_makemaker ? 'Makefile.PL' : 'Build.PL';
-	my @from_build = (@from_release, qw(INSTALL LICENSE CONTRIBUTING.md));
+	my @from_build = qw(INSTALL LICENSE CONTRIBUTING.md META.json);
+	push @from_build, $install_with_makemaker ? 'Makefile.PL' : 'Build.PL';
 	my @ignore_files = qw(Build.PL Makefile.PL);
 	my @dirty_files = qw(dist.ini Changes README.pod);
 	my $versioned_match = '^(?:lib|script|bin)/';
@@ -48,8 +47,7 @@ sub configure {
 		['Git::Commit' => { allow_dirty => [@dirty_files, @from_build], allow_dirty_match => $versioned_match, add_files_in => '/' }],
 		'Git::Tag',
 		[BumpVersionAfterRelease => { munge_makefile_pl => 0 }],
-		[CopyFilesFromRelease => { filename => \@from_release }],
-		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty => \@from_release, allow_dirty_match => $versioned_match, commit_msg => 'Bump version' }],
+		['Git::Commit' => 'Commit_Version_Bump' => { allow_dirty_match => $versioned_match, commit_msg => 'Bump version' }],
 		'Git::Push');
 	
 	# Pod tests
@@ -149,12 +147,7 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [Git::Tag]
  [BumpVersionAfterRelease]
  munge_makefile_pl = 0
- [CopyFilesFromRelease]
- filename = META.json
- filename = Makefile.PL
  [Git::Commit / Commit_Version_Bump]
- allow_dirty = META.json
- allow_dirty = Makefile.PL
  allow_dirty_match = ^(?:lib|script|bin)/
  commit_msg = Bump version
  [Git::Push]
