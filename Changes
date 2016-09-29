@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.028     2016-09-29 15:04:43 EDT
   - Regenerated files no longer need to be allowed in [Git::Check] and [Git::Commit] on release
 
 0.027     2016-09-29 13:50:21 EDT
