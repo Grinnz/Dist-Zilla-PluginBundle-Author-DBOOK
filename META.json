@@ -43,6 +43,7 @@
             "Dist::Zilla::Plugin::BumpVersionAfterRelease" : "0",
             "Dist::Zilla::Plugin::CheckChangesHasContent" : "0",
             "Dist::Zilla::Plugin::ConfirmRelease" : "0",
+            "Dist::Zilla::Plugin::CopyFilesFromRelease" : "0",
             "Dist::Zilla::Plugin::DistINI" : "0",
             "Dist::Zilla::Plugin::ExecDir" : "0",
             "Dist::Zilla::Plugin::FakeRelease" : "0",
@@ -358,6 +359,20 @@
             "version" : "0.015"
          },
          {
+            "class" : "Dist::Zilla::Plugin::CopyFilesFromRelease",
+            "config" : {
+               "Dist::Zilla::Plugin::CopyFilesFromRelease" : {
+                  "filename" : [
+                     "META.json",
+                     "Makefile.PL"
+                  ],
+                  "match" : []
+               }
+            },
+            "name" : "@Author::DBOOK/CopyFilesFromRelease",
+            "version" : "0.006"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
             "config" : {
                "Dist::Zilla::Plugin::Git::Commit" : {
@@ -366,8 +381,8 @@
                },
                "Dist::Zilla::Role::Git::DirtyFiles" : {
                   "allow_dirty" : [
-                     "Changes",
-                     "dist.ini"
+                     "META.json",
+                     "Makefile.PL"
                   ],
                   "allow_dirty_match" : [
                      "(?^:^(?:lib|script|bin)/)"
@@ -444,11 +459,11 @@
             "config" : {
                "Dist::Zilla::Plugin::Regenerate" : {
                   "filenames" : [
+                     "META.json",
+                     "Makefile.PL",
                      "INSTALL",
                      "LICENSE",
-                     "CONTRIBUTING.md",
-                     "META.json",
-                     "Makefile.PL"
+                     "CONTRIBUTING.md"
                   ]
                },
                "Dist::Zilla::Role::Regenerator" : {
@@ -564,8 +579,8 @@
             "version" : "6.007"
          },
          {
-            "class" : "Dist::Zilla::Plugin::UploadToCPAN",
-            "name" : "@Author::DBOOK/UploadToCPAN",
+            "class" : "Dist::Zilla::Plugin::FakeRelease",
+            "name" : "@Author::DBOOK/FakeRelease",
             "version" : "6.007"
          },
          {
