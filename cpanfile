@@ -4,6 +4,7 @@ requires 'Dist::Zilla';
 requires 'Dist::Zilla::Plugin::BumpVersionAfterRelease';
 requires 'Dist::Zilla::Plugin::CheckChangesHasContent';
 requires 'Dist::Zilla::Plugin::ConfirmRelease';
+requires 'Dist::Zilla::Plugin::CopyFilesFromRelease';
 requires 'Dist::Zilla::Plugin::DistINI';
 requires 'Dist::Zilla::Plugin::ExecDir';
 requires 'Dist::Zilla::Plugin::FakeRelease';
