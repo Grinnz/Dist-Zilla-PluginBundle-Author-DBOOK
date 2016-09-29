@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+0.029     2016-09-29 15:14:30 EDT
   - RewriteVersion does not modify files in tree so [Git::Commit] does not need to allow for that
 
 0.028     2016-09-29 15:04:43 EDT
