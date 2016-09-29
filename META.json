@@ -43,7 +43,6 @@
             "Dist::Zilla::Plugin::BumpVersionAfterRelease" : "0",
             "Dist::Zilla::Plugin::CheckChangesHasContent" : "0",
             "Dist::Zilla::Plugin::ConfirmRelease" : "0",
-            "Dist::Zilla::Plugin::CopyFilesFromRelease" : "0",
             "Dist::Zilla::Plugin::DistINI" : "0",
             "Dist::Zilla::Plugin::ExecDir" : "0",
             "Dist::Zilla::Plugin::FakeRelease" : "0",
@@ -112,11 +111,11 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/DBOOK.pm",
-         "version" : "0.027"
+         "version" : "0.028"
       },
       "Dist::Zilla::PluginBundle::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/DBOOK.pm",
-         "version" : "0.027"
+         "version" : "0.028"
       }
    },
    "release_status" : "stable",
@@ -131,7 +130,7 @@
          "web" : "https://github.com/Grinnz/Dist-Zilla-PluginBundle-Author-DBOOK"
       }
    },
-   "version" : "0.027",
+   "version" : "0.028",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.024000"
@@ -329,7 +328,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v0.027",
+                  "tag" : "v0.028",
                   "tag_format" : "v%v",
                   "tag_message" : "v%v"
                },
@@ -359,20 +358,6 @@
             "version" : "0.015"
          },
          {
-            "class" : "Dist::Zilla::Plugin::CopyFilesFromRelease",
-            "config" : {
-               "Dist::Zilla::Plugin::CopyFilesFromRelease" : {
-                  "filename" : [
-                     "META.json",
-                     "Makefile.PL"
-                  ],
-                  "match" : []
-               }
-            },
-            "name" : "@Author::DBOOK/CopyFilesFromRelease",
-            "version" : "0.006"
-         },
-         {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
             "config" : {
                "Dist::Zilla::Plugin::Git::Commit" : {
@@ -381,8 +366,8 @@
                },
                "Dist::Zilla::Role::Git::DirtyFiles" : {
                   "allow_dirty" : [
-                     "META.json",
-                     "Makefile.PL"
+                     "Changes",
+                     "dist.ini"
                   ],
                   "allow_dirty_match" : [
                      "(?^:^(?:lib|script|bin)/)"
@@ -459,11 +444,11 @@
             "config" : {
                "Dist::Zilla::Plugin::Regenerate" : {
                   "filenames" : [
-                     "META.json",
-                     "Makefile.PL",
                      "INSTALL",
                      "LICENSE",
-                     "CONTRIBUTING.md"
+                     "CONTRIBUTING.md",
+                     "META.json",
+                     "Makefile.PL"
                   ]
                },
                "Dist::Zilla::Role::Regenerator" : {
@@ -579,8 +564,8 @@
             "version" : "6.007"
          },
          {
-            "class" : "Dist::Zilla::Plugin::FakeRelease",
-            "name" : "@Author::DBOOK/FakeRelease",
+            "class" : "Dist::Zilla::Plugin::UploadToCPAN",
+            "name" : "@Author::DBOOK/UploadToCPAN",
             "version" : "6.007"
          },
          {

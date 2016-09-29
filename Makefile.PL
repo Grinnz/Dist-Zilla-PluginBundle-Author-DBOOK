@@ -29,7 +29,6 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::BumpVersionAfterRelease" => 0,
     "Dist::Zilla::Plugin::CheckChangesHasContent" => 0,
     "Dist::Zilla::Plugin::ConfirmRelease" => 0,
-    "Dist::Zilla::Plugin::CopyFilesFromRelease" => 0,
     "Dist::Zilla::Plugin::DistINI" => 0,
     "Dist::Zilla::Plugin::ExecDir" => 0,
     "Dist::Zilla::Plugin::FakeRelease" => 0,
@@ -87,7 +86,7 @@ my %WriteMakefileArgs = (
     "Test::File::ShareDir::Module" => 0,
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.027",
+  "VERSION" => "0.028",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -100,7 +99,6 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::BumpVersionAfterRelease" => 0,
   "Dist::Zilla::Plugin::CheckChangesHasContent" => 0,
   "Dist::Zilla::Plugin::ConfirmRelease" => 0,
-  "Dist::Zilla::Plugin::CopyFilesFromRelease" => 0,
   "Dist::Zilla::Plugin::DistINI" => 0,
   "Dist::Zilla::Plugin::ExecDir" => 0,
   "Dist::Zilla::Plugin::FakeRelease" => 0,
