@@ -32,6 +32,11 @@ sub configure {
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'Git::Contributors');
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
 	
+	my $irc = $self->payload->{irc} // '';
+	if (length $irc) {
+	  $self->add_plugins([MetaResources => { x_IRC => $irc }]);
+	}
+	
 	my @from_build = qw(INSTALL LICENSE CONTRIBUTING.md META.json);
 	push @from_build, $install_with_makemaker ? 'Makefile.PL' : 'Build.PL';
 	my @ignore_files = qw(Build.PL Makefile.PL);
@@ -236,6 +241,12 @@ L<ModuleBuildTiny|Dist::Zilla::Plugin::ModuleBuildTiny>, and
 L<ModuleBuildTiny::Fallback|Dist::Zilla::Plugin::ModuleBuildTiny::Fallback>.
 The default is C<MakeMaker>. Options for the selected installer can be
 specified using config slicing.
+
+=head2 irc
+
+ irc = irc://irc.perl.org/#distzilla
+
+Set the x_IRC resource metadata using L<Dist::Zilla::Plugin::MetaResources>.
 
 =head2 pod_tests
 

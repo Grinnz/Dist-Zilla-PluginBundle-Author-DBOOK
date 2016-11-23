@@ -161,6 +161,12 @@ L<ModuleBuildTiny::Fallback|Dist::Zilla::Plugin::ModuleBuildTiny::Fallback>.
 The default is C<MakeMaker>. Options for the selected installer can be
 specified using config slicing.
 
+=head2 irc
+
+ irc = irc://irc.perl.org/#distzilla
+
+Set the x_IRC resource metadata using L<Dist::Zilla::Plugin::MetaResources>.
+
 =head2 pod_tests
 
  pod_tests = 1
