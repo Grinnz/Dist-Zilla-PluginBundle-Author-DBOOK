@@ -113,11 +113,11 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/DBOOK.pm",
-         "version" : "0.032"
+         "version" : "0.033"
       },
       "Dist::Zilla::PluginBundle::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/DBOOK.pm",
-         "version" : "0.032"
+         "version" : "0.033"
       }
    },
    "release_status" : "stable",
@@ -133,12 +133,24 @@
       },
       "x_IRC" : "irc://irc.perl.org/#distzilla"
    },
-   "version" : "0.032",
+   "version" : "0.033",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.024000"
       },
       "plugins" : [
+         {
+            "class" : "Dist::Zilla::Plugin::lib",
+            "config" : {
+               "Dist::Zilla::Plugin::lib" : {
+                  "lib" : [
+                     "lib"
+                  ]
+               }
+            },
+            "name" : "lib",
+            "version" : "0.001001"
+         },
          {
             "class" : "Dist::Zilla::Plugin::Git::GatherDir",
             "config" : {
@@ -346,7 +358,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v0.032",
+                  "tag" : "v0.033",
                   "tag_format" : "v%v",
                   "tag_message" : "v%v"
                },
