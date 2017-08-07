@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - Bump [Test::ReportPrereqs] dependency to 0.027 to prevent
+    t/00-report-prereqs.dd from being pruned
 
 0.034     2017-08-04 21:18:06 EDT
   - Mention installdeps command in CONTRIBUTING.md

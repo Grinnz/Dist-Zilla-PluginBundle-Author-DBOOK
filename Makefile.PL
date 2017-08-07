@@ -68,7 +68,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::RunExtraTests" => 0,
     "Dist::Zilla::Plugin::ShareDir" => 0,
     "Dist::Zilla::Plugin::TemplateModule" => 0,
-    "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.022",
+    "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.027",
     "Dist::Zilla::Plugin::TestRelease" => 0,
     "Dist::Zilla::Plugin::UploadToCPAN" => 0,
     "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
@@ -88,7 +88,7 @@ my %WriteMakefileArgs = (
     "Test::File::ShareDir::Module" => 0,
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.034",
+  "VERSION" => "0.035",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -140,7 +140,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::RunExtraTests" => 0,
   "Dist::Zilla::Plugin::ShareDir" => 0,
   "Dist::Zilla::Plugin::TemplateModule" => 0,
-  "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.022",
+  "Dist::Zilla::Plugin::Test::ReportPrereqs" => "0.027",
   "Dist::Zilla::Plugin::TestRelease" => 0,
   "Dist::Zilla::Plugin::UploadToCPAN" => 0,
   "Dist::Zilla::Role::MintingProfile::ShareDir" => 0,
