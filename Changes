@@ -1,4 +1,5 @@
 {{$NEXT}}
+  - Update source licensing of generated CONTRIBUTING.md
 
 0.035     2017-08-07 12:50:59 EDT
   - Bump [Test::ReportPrereqs] dependency to 0.027 to prevent
