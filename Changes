@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - Update travis config in minting profile to add perl 5.30 and correctly
+    configure perls 5.20 and older
 
 0.038     2018-10-03 13:34:28 EDT
   - [Regenerate::AfterReleasers] will now be properly used by subclasses
