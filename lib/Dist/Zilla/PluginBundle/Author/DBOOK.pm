@@ -8,7 +8,7 @@ with 'Dist::Zilla::Role::PluginBundle::Easy',
 use namespace::clean;
 use Data::Section -setup;
 
-our $VERSION = '0.039';
+our $VERSION = 'v1.0.0';
 
 sub configure {
 	my $self = shift;
