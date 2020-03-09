@@ -1,4 +1,5 @@
 {{$NEXT}}
+  - Remove [MetaConfig] to reduce META clutter
 
 v1.0.0    2019-11-06 13:25:17 EST
   - Update travis config in minting profile to add perl 5.30 and correctly
