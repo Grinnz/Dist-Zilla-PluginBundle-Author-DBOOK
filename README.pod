@@ -32,7 +32,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  filename = CONTRIBUTING.md
  content = ...
  
- [MetaConfig]
  [MetaProvides::Package]
  [Prereqs::FromCPANfile]
  [Git::Contributors]
