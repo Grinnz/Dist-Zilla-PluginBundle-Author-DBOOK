@@ -35,6 +35,7 @@ requires 'Dist::Zilla::Plugin::ModuleBuildTiny::Fallback';
 requires 'Dist::Zilla::Plugin::NextRelease';
 requires 'Dist::Zilla::Plugin::PodCoverageTests';
 requires 'Dist::Zilla::Plugin::PodSyntaxTests';
+requires 'Dist::Zilla::Plugin::PrereqsFile';
 requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';
 requires 'Dist::Zilla::Plugin::PruneCruft';
 requires 'Dist::Zilla::Plugin::ReadmeAnyFromPod';
