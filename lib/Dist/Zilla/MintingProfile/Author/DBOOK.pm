@@ -26,27 +26,27 @@ module skeleton in C<lib> and the following additional files:
 
 =item *
 
-C<Changes>
+F<Changes>
 
 =item *
 
-C<dist.ini>
+F<dist.ini>
 
 =item *
 
-C<LICENSE>
+F<LICENSE>
 
 =item *
 
-C<prereqs.yml>
+F<prereqs.yml>
 
 =item *
 
-C<.gitignore>
+F<.gitignore>
 
 =item *
 
-C<.travis.yml>
+F<.github/workflows/test.yml>
 
 =back
 
