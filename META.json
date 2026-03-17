@@ -114,11 +114,11 @@
    "provides" : {
       "Dist::Zilla::MintingProfile::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/MintingProfile/Author/DBOOK.pm",
-         "version" : "v1.0.6"
+         "version" : "v1.0.7"
       },
       "Dist::Zilla::PluginBundle::Author::DBOOK" : {
          "file" : "lib/Dist/Zilla/PluginBundle/Author/DBOOK.pm",
-         "version" : "v1.0.6"
+         "version" : "v1.0.7"
       }
    },
    "release_status" : "stable",
@@ -134,7 +134,7 @@
       },
       "x_IRC" : "irc://irc.perl.org/#distzilla"
    },
-   "version" : "v1.0.6",
+   "version" : "v1.0.7",
    "x_contributors" : [
       "Dan Book <grinnz@gmail.com>",
       "Dan Book <grinnz@grinnz.com>"
