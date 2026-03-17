@@ -132,7 +132,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  [NextRelease]
  format = %-9v %{yyyy-MM-dd HH:mm:ss VVV}d%{ (TRIAL RELEASE)}T
  [CopyFilesFromRelease]
- filename = INSTALL
  filename = LICENSE
  filename = CONTRIBUTING.md
  filename = META.json
@@ -142,7 +141,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  allow_dirty = dist.ini
  allow_dirty = Changes
  allow_dirty = README.pod
- allow_dirty = INSTALL
  allow_dirty = LICENSE
  allow_dirty = CONTRIBUTING.md
  allow_dirty = META.json
@@ -161,7 +159,6 @@ This is the plugin bundle that DBOOK uses. It is equivalent to:
  
  [Test::ReportPrereqs]
  [Git::GatherDir]
- exclude_filename = INSTALL
  exclude_filename = LICENSE
  exclude_filename = CONTRIBUTING.md
  exclude_filename = META.json
@@ -198,7 +195,7 @@ L<Dist::Zilla>, and provide important information about the distribution in
 the repository, several files can be copied to the repository from the build
 by running L<dzil regenerate|Dist::Zilla::App::Command::regenerate>, and are
 copied and committed automatically on release. These files are:
-C<CONTRIBUTING.md>, C<INSTALL>, C<LICENSE>, C<Makefile.PL>/C<Build.PL>, and
+C<CONTRIBUTING.md>, C<LICENSE>, C<Makefile.PL>/C<Build.PL>, and
 C<META.json>. The file C<README.pod> will also be generated in the repository
 (but not the build) by C<dzil regenerate> and C<dzil release>.
 
