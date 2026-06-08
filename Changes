@@ -1,4 +1,6 @@
 {{$NEXT}}
+  - Move template for CONTRIBUTING.md from DATA to the distribution sharedir.
+  - Add AI contributions policy to CONTRIBUTING.md.
 
 v1.0.7    2026-03-16 23:25:57 EDT
   - Fix file test issue in minting profile GitHub workflow

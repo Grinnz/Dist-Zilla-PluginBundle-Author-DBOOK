@@ -62,4 +62,5 @@ test:
     Path::Tiny: '0.079' # relative method algorithm
     Test::DZil: 0
     Test::More: '0.88'
+    Test::File::ShareDir::Dist: 0
     Test::File::ShareDir::Module: 0

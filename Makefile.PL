@@ -87,6 +87,7 @@ my %WriteMakefileArgs = (
     "Git::Wrapper" => 0,
     "Path::Tiny" => "0.079",
     "Test::DZil" => 0,
+    "Test::File::ShareDir::Dist" => 0,
     "Test::File::ShareDir::Module" => 0,
     "Test::More" => "0.88"
   },
@@ -157,6 +158,7 @@ my %FallbackPrereqs = (
   "Path::Tiny" => "0.079",
   "Scalar::Util" => 0,
   "Test::DZil" => 0,
+  "Test::File::ShareDir::Dist" => 0,
   "Test::File::ShareDir::Module" => 0,
   "Test::More" => "0.88",
   "namespace::clean" => 0
