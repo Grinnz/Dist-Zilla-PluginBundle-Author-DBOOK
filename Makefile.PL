@@ -9,6 +9,7 @@ use ExtUtils::MakeMaker;
 use File::ShareDir::Install;
 $File::ShareDir::Install::INCLUDE_DOTFILES = 1;
 $File::ShareDir::Install::INCLUDE_DOTDIRS = 1;
+install_share dist => "share";
 install_share module => "Dist::Zilla::MintingProfile::Author::DBOOK", "profiles";
 
 
@@ -34,7 +35,7 @@ my %WriteMakefileArgs = (
     "Dist::Zilla::Plugin::ExecDir" => 0,
     "Dist::Zilla::Plugin::FakeRelease" => 0,
     "Dist::Zilla::Plugin::GatherDir::Template" => 0,
-    "Dist::Zilla::Plugin::GenerateFile" => 0,
+    "Dist::Zilla::Plugin::GenerateFile::FromShareDir" => 0,
     "Dist::Zilla::Plugin::Git::Check" => 0,
     "Dist::Zilla::Plugin::Git::Commit" => 0,
     "Dist::Zilla::Plugin::Git::Contributors" => 0,
@@ -89,7 +90,7 @@ my %WriteMakefileArgs = (
     "Test::File::ShareDir::Module" => 0,
     "Test::More" => "0.88"
   },
-  "VERSION" => "v1.0.7",
+  "VERSION" => "v1.0.8",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -107,7 +108,7 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Plugin::ExecDir" => 0,
   "Dist::Zilla::Plugin::FakeRelease" => 0,
   "Dist::Zilla::Plugin::GatherDir::Template" => 0,
-  "Dist::Zilla::Plugin::GenerateFile" => 0,
+  "Dist::Zilla::Plugin::GenerateFile::FromShareDir" => 0,
   "Dist::Zilla::Plugin::Git::Check" => 0,
   "Dist::Zilla::Plugin::Git::Commit" => 0,
   "Dist::Zilla::Plugin::Git::Contributors" => 0,

@@ -27,7 +27,7 @@ sub configure {
 	$githubmeta_config{user} = $user if length $user;
 	$self->add_plugins([GithubMeta => \%githubmeta_config]);
 	$self->add_plugins([ReadmeAnyFromPod => 'Readme_Github' => { type => 'pod', filename => 'README.pod', location => 'root', phase => 'release' }]);
-	$self->add_plugins(['GenerateFile::FromShareDir' => 'Generate_Contrib' => { -filename => 'CONTRIBUTING.md', -source_filename => 'CONTRIBUTING.md.tmpl', -dist => __PACKAGE__ }]);
+	$self->add_plugins(['GenerateFile::FromShareDir' => 'Generate_Contrib' => { -filename => 'CONTRIBUTING.md', -source_filename => 'CONTRIBUTING.md.tmpl', -dist => 'Dist-Zilla-PluginBundle-Author-DBOOK' }]);
 	$self->add_plugins('MetaProvides::Package', 'Prereqs::FromCPANfile', 'PrereqsFile', 'Git::Contributors');
 	$self->add_plugins([MetaNoIndex => { directory => [ qw/t xt inc share eg examples/ ] }]);
 	
