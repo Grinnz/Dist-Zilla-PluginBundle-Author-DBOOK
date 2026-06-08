@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+v1.0.8    2026-06-08 04:28:24 EDT
   - Move template for CONTRIBUTING.md from DATA to the distribution sharedir.
   - Add AI contributions policy to CONTRIBUTING.md.
 
