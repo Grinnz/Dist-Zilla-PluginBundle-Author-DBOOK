@@ -261,7 +261,7 @@ Report any issues on the public bugtracker.
 
 =head1 AUTHOR
 
-Dan Book, C<dbook@cpan.org>
+Dan Book, C<book.d.wit@proton.me>
 
 =head1 COPYRIGHT AND LICENSE
 
