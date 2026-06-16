@@ -167,6 +167,26 @@ specified using config slicing.
  irc = irc://irc.perl.org/#distzilla
 
 Set the x_IRC resource metadata using L<Dist::Zilla::Plugin::MetaResources>.
+Deprecated; use L</"irc_channel">.
+
+=head2 irc_channel
+
+ irc_channel = distzilla
+
+Set the channel for IRC resource metadata using L<Dist::Zilla::Plugin::IRC>.
+
+=head2 irc_network
+
+ irc_network = perl
+
+Set the network for IRC resource metadata using L<Dist::Zilla::Plugin::IRC>.
+
+=head2 irc_host
+
+ irc_host = irc.perl.org
+
+Set the host for IRC resource metadata using L<Dist::Zilla::Plugin::IRC>.
+Only for IRC hosts that cannot be set via L</"irc_network">.
 
 =head2 pod_tests
 
