@@ -1,4 +1,6 @@
 {{$NEXT}}
+
+v1.0.10   2026-06-15 20:23:41 EDT
   - Update checkout and install-with-cpanm action versions in minting profile GitHub workflow
   - Add irc_channel, irc_network, and irc_host options to use [IRC] instead of setting x_IRC manually.
 
